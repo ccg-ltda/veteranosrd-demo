@@ -1,0 +1,21 @@
+<section id="page-agenda" class="page hidden">
+        <div class="grid-2">
+          <div class="surface">
+            <div style="padding:16px;border-bottom:1px solid var(--line)"><h3 class="section-title" style="margin:0">Calendario — agosto 2026</h3></div>
+            <div class="calendar-mini" id="calendarMini"></div>
+          </div>
+          <div class="surface">
+            <div style="padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+              <h3 class="section-title" style="margin:0">Próximos eventos</h3>
+              <button class="btn btn-primary btn-small" onclick="openEventoModal()">+ Crear evento</button>
+            </div>
+            <div style="padding:16px 16px 0">
+              <div class="table-search" style="max-width:100%">
+                <input type="text" placeholder="Buscar evento o contacto..." id="searchAgenda" oninput="renderEventos()">
+                <span class="search-icon">&#128269;</span>
+              </div>
+            </div>
+            <div id="eventosList" style="padding:16px"></div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,35 @@
+<section id="page-automatizaciones" class="page hidden">
+        <div style="margin-bottom:14px">
+          <h2 class="section-title" style="margin-bottom:2px">Automatizaciones</h2>
+          <p class="text-muted" style="margin:0;font-size:12.5px">Flujos activos de seguimiento automatizado, recordatorios y reactivación</p>
+        </div>
+        <div class="grid-2" style="grid-template-columns:220px 1fr 260px;align-items:start">
+          <div class="surface" style="padding:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+              <span class="text-muted" style="font-size:11px;font-weight:800;text-transform:uppercase">Automatizaciones</span>
+              <button class="btn btn-ghost btn-small" style="padding:4px 8px" onclick="crearAutomatizacion()">+</button>
+            </div>
+            <input type="text" placeholder="Buscar..." id="searchAuto" oninput="renderAutoList()" style="margin-bottom:10px;font-size:12px">
+            <div id="autoList"></div>
+          </div>
+          <div class="surface" style="padding:20px;overflow-x:auto">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:6px">
+              <div>
+                <div style="font-size:17px;font-weight:800" id="flowTitulo">—</div>
+                <div class="text-muted" style="font-size:11.5px" id="flowVersion">—</div>
+              </div>
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;cursor:pointer">
+                  <input type="checkbox" id="flowActiva" style="width:auto" onchange="toggleAutomatizacionActiva()"> Activa
+                </label>
+                <button class="btn btn-ghost btn-small" onclick="renombrarAutomatizacion()">Renombrar</button>
+                <button class="btn btn-ghost btn-small" onclick="guardarAutomatizacion()">Guardar</button>
+                <button class="btn btn-primary btn-small" onclick="publicarAutomatizacion()">Publicar</button>
+              </div>
+            </div>
+            <div class="flow-canvas" id="flowCanvas"></div>
+            <button class="kanban-add" style="max-width:280px;margin:8px auto 0" onclick="agregarNodo()">+ Agregar nodo</button>
+          </div>
+          <div class="surface node-details-panel" id="nodeDetailsPanel"></div>
+        </div>
+      </section>

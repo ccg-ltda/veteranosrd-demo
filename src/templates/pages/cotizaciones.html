@@ -1,0 +1,6 @@
+<section id="page-cotizaciones" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Cotizaciones</h2><p class="text-muted" style="margin:0;font-size:12.5px">Propuestas comerciales vinculadas a clientes y oportunidades.</p></div><button class="btn btn-primary" onclick="openQuoteModal()">+ Nueva cotización</button></div>
+        <div class="metric-strip" id="quoteMetrics"></div>
+        <div class="table-container"><div class="table-header"><div class="table-search"><input id="quoteSearch" placeholder="Buscar número, cliente o empresa..." oninput="renderQuotes()"><span class="search-icon">&#128269;</span></div><select id="quoteFilter" style="width:auto" onchange="renderQuotes()"><option value="">Todos los estados</option><option>Borrador</option><option>Enviada</option><option>Aceptada</option><option>Rechazada</option></select></div><div class="table-scroll"><table><thead><tr><th>Cotización</th><th>Cliente / empresa</th><th>Producto o servicio</th><th>Fecha</th><th>Total</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="quotesTable"></tbody></table></div></div>
+        <div class="simulation-note" style="margin-top:10px">&#9432; La generación y los envíos se simulan; no se contacta a servicios externos.</div>
+      </section>

@@ -1,0 +1,21 @@
+<section id="page-ads" class="page hidden">
+        <div style="margin-bottom:18px">
+          <h2 class="section-title" style="margin-bottom:2px">Conexión de clientes potenciales de Ads</h2>
+          <p class="text-muted" style="margin:0;font-size:12.5px">Captura automática de clientes potenciales desde tus campañas de pauta digital</p>
+        </div>
+        <div class="ads-grid" id="adsGrid"></div>
+        <div class="surface" style="padding:0;overflow:hidden">
+          <div style="padding:16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <h3 class="section-title" style="margin:0">Clientes potenciales entrantes</h3>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+              <div class="table-search" style="max-width:220px">
+                <input type="text" placeholder="Buscar cliente potencial..." id="searchLeads" oninput="renderLeadsList()">
+                <span class="search-icon">&#128269;</span>
+              </div>
+              <button class="btn btn-ghost btn-small" onclick="exportLeadsCSV()">&#8595; Exportar</button>
+              <button class="btn btn-ghost btn-small" onclick="simularLeadEntrante()">&#8635; Simular cliente potencial</button>
+            </div>
+          </div>
+          <div id="leadsList" style="padding:16px"></div>
+        </div>
+      </section>

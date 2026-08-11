@@ -1,0 +1,17 @@
+<section id="page-pipeline" class="page hidden">
+        <div class="banner-card">
+          <div>
+            <div class="banner-title">&#127942; Proceso comercial</div>
+            <div class="banner-sub" id="pipelineBannerSub">— oportunidades &middot; —</div>
+          </div>
+          <div class="banner-actions">
+            <button class="btn lg-btn" id="btnIAPipeline" onclick="enriquecerPipelineIA()" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25)">&#10024; IA</button>
+            <button class="btn btn-primary" id="btnNuevaOportunidad" onclick="openClienteModal(null,'Prospecto')">+ Oportunidad</button>
+          </div>
+        </div>
+        <div class="table-search" style="max-width:340px;margin-bottom:16px">
+          <input type="text" placeholder="Buscar empresa o contacto en el proceso comercial..." id="searchPipeline" oninput="renderKanban()">
+          <span class="search-icon">&#128269;</span>
+        </div>
+        <div class="kanban-board" id="kanbanBoard"></div>
+      </section>

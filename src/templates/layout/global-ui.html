@@ -1,0 +1,263 @@
+<!-- MODAL CLIENTE -->
+<div id="modal-cliente" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-cliente')">&#10005;</button>
+    <h2 class="modal-title" id="modalClienteTitle">Nuevo contacto</h2>
+    <form id="formCliente" onsubmit="submitCliente(event)">
+      <input type="hidden" id="cli-id">
+      <div class="form-group"><label>Empresa</label><input type="text" id="cli-empresa" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>Contacto</label><input type="text" id="cli-contacto" required></div>
+        <div class="form-group"><label>Empresa vinculada (opcional)</label><select id="cli-empresaId"><option value="">— Sin vincular —</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Correo</label><input type="email" id="cli-email" required></div>
+        <div class="form-group"><label>Teléfono</label><input type="tel" id="cli-telefono" placeholder="+57 1 234 5678" required></div>
+      </div>
+      <div class="form-row3">
+        <div class="form-group"><label>Estado</label><select id="cli-estado" required><option>Prospecto</option><option>Activo</option><option>Inactivo</option></select></div>
+        <div class="form-group"><label>Etapa del proceso comercial</label><select id="cli-etapa" required><option>Prospecto</option><option>Contactado</option><option>Negociación</option><option>Propuesta</option><option>Cerrado</option></select></div>
+        <div class="form-group"><label>Canal de origen</label><select id="cli-canal"><option>WhatsApp</option><option>Email</option><option>Llamada</option><option>SMS</option><option>Bot IA</option><option>Ads</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Valor de oportunidad (COP)</label><input type="number" id="cli-valor" min="0" step="100000" placeholder="30000000" required></div>
+        <div class="form-group"><label>Probabilidad de cierre (%)</label><input type="number" id="cli-probabilidad" min="0" max="100" step="5" placeholder="40" required></div>
+      </div>
+      <div class="form-hint" style="margin-bottom:14px">El valor se registra en pesos colombianos (COP); se convierte automáticamente a la moneda activa (<span id="cli-currency-note">COP</span>) en las vistas.</div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-cliente')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar contacto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL EMPRESA -->
+<div id="modal-empresa" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-empresa')">&#10005;</button>
+    <h2 class="modal-title" id="modalEmpresaTitle">Nueva empresa</h2>
+    <form onsubmit="submitEmpresa(event)">
+      <input type="hidden" id="emp-id">
+      <div class="form-group"><label>Razón social</label><input type="text" id="emp-nombre" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>NIT</label><input type="text" id="emp-nit" placeholder="900.000.000-0" required></div>
+        <div class="form-group"><label>Sector</label><input type="text" id="emp-sector" placeholder="Tecnología, Retail..." required></div>
+      </div>
+      <div class="form-group"><label>Ciudad</label><input type="text" id="emp-ciudad" placeholder="Bogotá, Colombia" required></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-empresa')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar empresa</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL FICHA IA EMPRESA -->
+<div id="modal-empresa-ia" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-empresa-ia')">&#10005;</button>
+    <h2 class="modal-title"><span class="ia-badge">&#10024; Enriquecido con IA</span></h2>
+    <div id="empresaIaBody"></div>
+    <div class="modal-actions"><button type="button" class="btn btn-primary" onclick="closeModal('modal-empresa-ia')">Cerrar</button></div>
+  </div>
+</div>
+
+<!-- MODAL HISTORIAL EMPRESA -->
+<div id="modal-empresa-historial" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-empresa-historial')">&#10005;</button>
+    <h2 class="modal-title" id="empresaHistorialTitulo">Historial de la empresa</h2>
+    <div id="empresaHistorialBody"></div>
+    <div class="modal-actions"><button type="button" class="btn btn-primary" onclick="closeModal('modal-empresa-historial')">Cerrar</button></div>
+  </div>
+</div>
+
+<!-- MODAL EVENTO -->
+<div id="modal-evento" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-evento')">&#10005;</button>
+    <h2 class="modal-title">Nuevo evento</h2>
+    <form onsubmit="submitEvento(event)">
+      <div class="form-group"><label>Título</label><input type="text" id="ev-titulo" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>Fecha</label><input type="date" id="ev-fecha" required></div>
+        <div class="form-group"><label>Hora</label><input type="time" id="ev-hora" required></div>
+      </div>
+      <div class="form-group"><label>Contacto relacionado (opcional)</label><select id="ev-clienteId"><option value="">— Ninguno —</option></select></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-evento')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Crear evento</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL CORREO -->
+<div id="modal-correo" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-correo')">&#10005;</button>
+    <h2 class="modal-title">Enviar correo</h2>
+    <form onsubmit="submitCorreo(event)">
+      <div class="form-group"><label>Para</label><input type="email" id="mail-para" required></div>
+      <div class="form-group"><label>Asunto</label><input type="text" id="mail-asunto" required></div>
+      <div class="form-group"><label>Mensaje</label><textarea id="mail-cuerpo" rows="6" required></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-correo')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL TEMPLATE -->
+<div id="modal-template" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-template')">&#10005;</button>
+    <h2 class="modal-title" id="modalTemplateTitle">Nueva plantilla</h2>
+    <form onsubmit="submitTemplate(event)">
+      <input type="hidden" id="tpl-tipo">
+      <div class="form-group"><label>Nombre de la plantilla</label><input type="text" id="tpl-nombre" required></div>
+      <div class="form-group"><label>Mensaje (usa {nombre}, {servicio}, {fecha}, {hora})</label><textarea id="tpl-texto" rows="4" required></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-template')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar plantilla</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL CAMPAÑA -->
+<div id="modal-campana" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-campana')">&#10005;</button>
+    <h2 class="modal-title">Enviar campaña</h2>
+    <form onsubmit="submitCampana(event)">
+      <div class="form-group"><label>Plantilla</label><select id="camp-template" required></select></div>
+      <div class="form-group"><label>Segmento destino</label>
+        <select id="camp-segmento" required onchange="toggleCampanaSegmento()">
+          <option value="">Todos los contactos</option>
+          <option value="Activo">Solo Activos</option><option value="Prospecto">Solo Prospectos</option><option value="Inactivo">Solo Inactivos</option>
+          <option value="individual">Un contacto específico</option>
+        </select>
+      </div>
+      <div class="form-group hidden" id="camp-individualWrap"><label>Contacto</label><select id="camp-clienteId"></select></div>
+      <div class="surface-2" style="padding:12px;font-size:12.5px;margin-bottom:6px" id="campanaPreviewCount">Selecciona un segmento para ver cuántos contactos recibirán el mensaje.</div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-campana')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Enviar campaña</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL GESTIÓN -->
+<div id="modal-gestion" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-gestion')">&#10005;</button>
+    <h2 class="modal-title">Nueva gestión</h2>
+    <p class="text-muted" style="margin-top:-10px;margin-bottom:16px;font-size:12.5px">El detalle quedará registrado como nota en el historial del contacto o de la empresa.</p>
+    <form onsubmit="submitGestion(event)">
+      <div class="form-group"><label>Vincular gestión a</label>
+        <select id="ges-vinculo" onchange="toggleGestionVinculo()">
+          <option value="contacto">Un contacto</option>
+          <option value="empresa">Una empresa</option>
+        </select>
+      </div>
+      <div class="form-group" id="ges-clienteWrap"><label>Contacto</label><select id="ges-clienteId" required></select></div>
+      <div class="form-group hidden" id="ges-empresaWrap"><label>Empresa</label><select id="ges-empresaId"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>Estado de la gestión</label>
+          <select id="ges-estado" required>
+            <option>No contactado</option><option>Volver a llamar</option><option>Contactado</option>
+            <option>Interesado</option><option>Visita agendada</option><option>No interesado</option><option>Cerrado</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Canal</label><select id="ges-canal"><option>Llamada</option><option>WhatsApp</option><option>Email</option><option>SMS</option><option>Presencial</option></select></div>
+      </div>
+      <div class="form-row">
+      <div class="form-group"><label>Producto / servicio de interés</label><input type="text" id="ges-producto" placeholder="Suscripción, soporte, consultoría..." required></div>
+        <div class="form-group"><label>Próxima fecha de seguimiento</label><input type="date" id="ges-fecha"></div>
+      </div>
+      <div class="form-group"><label>Asesor responsable</label><input type="text" id="ges-asesor" placeholder="Katherine Silva" required></div>
+      <div class="form-group"><label>Detalle de la gestión (nota)</label><textarea id="ges-detalle" rows="4" placeholder="¿Qué se habló? ¿Cuál es el siguiente paso?" required></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-gestion')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar gestión</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL USUARIO -->
+<div id="modal-usuario" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-usuario')">&#10005;</button>
+    <h2 class="modal-title">Nuevo usuario</h2>
+    <form onsubmit="submitUsuario(event)">
+      <div class="form-group"><label>Nombre completo</label><input type="text" id="usr-nombre" required></div>
+      <div class="form-group"><label>Correo corporativo</label><input type="email" id="usr-correo" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>Rol</label>
+          <select id="usr-rol" required>
+            <option value="Administrador">Administrador</option>
+            <option value="Supervisor">Supervisor</option>
+            <option value="Asesor">Asesor Comercial</option>
+            <option value="Lectura">Solo lectura</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Estado</label><select id="usr-estado" required><option>Activo</option><option>Inactivo</option></select></div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modal-usuario')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar usuario</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODAL TAREA -->
+<div id="modal-task" class="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal('modal-task')">&#10005;</button><h2 class="modal-title">Nueva tarea comercial</h2><form onsubmit="submitTask(event)"><div class="form-group"><label>Tipo de tarea</label><select id="task-type" required><option>Llamar cliente</option><option>Enviar propuesta</option><option>Realizar seguimiento</option><option>Preparar demostración</option><option>Enviar cotización</option><option>Cobrar factura</option><option>Reunión comercial</option></select></div><div class="form-row"><div class="form-group"><label>Cliente</label><input id="task-client" required></div><div class="form-group"><label>Empresa</label><input id="task-company" required></div></div><div class="form-row"><div class="form-group"><label>Responsable</label><select id="task-owner"><option>Katherine Silva</option><option>Sarah Chen</option><option>Carlos Méndez</option></select></div><div class="form-group"><label>Prioridad</label><select id="task-priority"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div></div><div class="form-row"><div class="form-group"><label>Fecha</label><input type="date" id="task-date" required></div><div class="form-group"><label>Hora</label><input type="time" id="task-time" required></div></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-task')">Cancelar</button><button class="btn btn-primary" type="submit">Crear tarea</button></div></form></div></div>
+
+<!-- MODAL COTIZACIÓN -->
+<div id="modal-quote" class="modal"><div class="modal-content wide"><button class="modal-close" onclick="closeModal('modal-quote')">&#10005;</button><h2 class="modal-title" id="quoteModalTitle">Nueva cotización</h2><form onsubmit="submitQuote(event)"><input type="hidden" id="quote-id"><div class="form-row"><div class="form-group"><label>Cliente</label><input id="quote-client" required></div><div class="form-group"><label>Empresa</label><input id="quote-company" required></div></div><div class="form-group"><label>Producto o servicio</label><select id="quote-product" required onchange="fillQuotePrice()"></select></div><div class="form-row3"><div class="form-group"><label>Cantidad</label><input type="number" min="1" value="1" id="quote-qty" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Precio</label><input type="number" min="0" id="quote-price" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Descuento (%)</label><input type="number" min="0" max="100" value="0" id="quote-discount" required oninput="updateQuotePreview()"></div></div><div class="form-row"><div class="form-group"><label id="quoteTaxLabel">IVA (Colombia) (%)</label><input type="number" min="0" value="19" id="quote-tax" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Fecha</label><input type="date" id="quote-date" required></div></div><div class="surface-2" style="padding:14px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap"><span>Subtotal: <strong id="quote-subtotal">—</strong></span><span>Total: <strong id="quote-total">—</strong></span></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-quote')">Cancelar</button><button type="submit" class="btn btn-primary">Guardar cotización</button></div></form></div></div>
+
+<!-- MODAL PRODUCTO -->
+<div id="modal-product" class="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal('modal-product')">&#10005;</button><h2 class="modal-title">Nuevo producto o servicio</h2><form onsubmit="submitProduct(event)"><div class="form-group"><label>Nombre</label><input id="product-name" required></div><div class="form-group"><label>Descripción</label><textarea id="product-desc" rows="3" required></textarea></div><div class="form-row3"><div class="form-group"><label>Precio</label><input type="number" min="0" id="product-price" required></div><div class="form-group"><label id="productTaxLabel">IVA (Colombia) (%)</label><input type="number" min="0" id="product-tax" value="19" required></div><div class="form-group"><label>Comisión (%)</label><input type="number" min="0" id="product-commission" value="5" required></div></div><div class="form-group"><label>Estado</label><select id="product-status"><option>Activo</option><option>Inactivo</option></select></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-product')">Cancelar</button><button class="btn btn-primary" type="submit">Guardar</button></div></form></div></div>
+
+<!-- MODAL DETALLE COTIZACIÓN -->
+<div id="modal-quote-detail" class="modal"><div class="modal-content wide"><button class="modal-close" onclick="closeModal('modal-quote-detail')">&#10005;</button><div id="quoteDetail"></div></div></div>
+
+<!-- DRAWER FICHA CONTACTO -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawerFicha">
+  <div class="drawer-head">
+    <button class="drawer-close" onclick="closeDrawer()">&#10005;</button>
+    <div class="drawer-title" id="fichaNombre">—</div>
+    <div class="drawer-sub" id="fichaSub">—</div>
+  </div>
+  <div class="drawer-tabs">
+    <button class="drawer-tab active" onclick="switchFichaTab('resumen')" id="ftab-resumen">Resumen</button>
+    <button class="drawer-tab" onclick="switchFichaTab('actividad')" id="ftab-actividad">Actividad y gestiones</button>
+    <button class="drawer-tab" onclick="switchFichaTab('notas')" id="ftab-notas">Notas libres</button>
+  </div>
+  <div class="drawer-body">
+    <div id="fdiv-resumen"></div>
+    <div id="fdiv-actividad" class="hidden"></div>
+    <div id="fdiv-notas" class="hidden"></div>
+  </div>
+</div>
+
+<button class="ava-widget" id="avaWidget" onclick="toggleAVAChat()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<div class="ava-preview" id="avaPreview">
+  <div class="ava-preview-header"><span>&#128172; Asistente AVAChat</span><button onclick="toggleAVAChat()" style="background:none;border:none;cursor:pointer;color:var(--ink-600)">&#10005;</button></div>
+  <div class="ava-msgs" id="avaMsgs"><div class="ava-preview-msg">Hola, soy AVA &#128075; ¿En qué te puedo ayudar hoy?</div></div>
+  <div class="ava-preview-input">
+    <input type="text" id="avaInput" placeholder="Escribe un mensaje..." onkeydown="if(event.key==='Enter')sendAvaMessage()">
+    <button class="btn btn-primary" onclick="sendAvaMessage()">&#8594;</button>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>

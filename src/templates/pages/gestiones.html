@@ -1,0 +1,12 @@
+<section id="page-gestiones" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Gestiones Comerciales</h2><p class="text-muted" style="margin:0;font-size:12.5px">Tareas, seguimientos e historial comercial centralizados.</p></div><div class="marketing-tabs" style="margin:0"><button class="marketing-tab active" onclick="switchGestionesTab('tareas',this)">Tareas y alertas</button><button class="marketing-tab" onclick="switchGestionesTab('historial',this)">Historial</button></div></div>
+        <div id="gestiones-pane-tareas" class="marketing-pane">
+        <div class="page-tools">
+          <div><h2 class="section-title">Mis tareas de hoy</h2><p class="text-muted" style="margin:0;font-size:12.5px">Prioridades, seguimientos y próximos pasos del equipo comercial.</p></div>
+          <div class="toolbar"><select id="taskFilter" style="width:auto" onchange="renderTasks()"><option value="">Todos los estados</option><option>Pendiente</option><option>En progreso</option><option>Completada</option></select><button class="btn btn-primary" onclick="openTaskModal()">+ Nueva tarea</button></div>
+        </div>
+        <div class="surface" style="padding:16px;margin-bottom:18px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px"><h3 class="section-title" style="margin:0">Seguimiento inteligente</h3><span class="ia-badge">&#10024; AVA</span></div><div id="followupAlerts"></div></div>
+        <div class="table-container"><div class="table-header"><div class="table-search"><input id="taskSearch" placeholder="Buscar cliente, empresa o responsable..." oninput="renderTasks()"><span class="search-icon">&#128269;</span></div></div><div class="table-scroll"><table class="mobile-cards"><thead><tr><th>Tarea</th><th>Cliente</th><th>Empresa</th><th>Responsable</th><th>Fecha y hora</th><th>Prioridad</th><th>Estado</th><th>Acción</th></tr></thead><tbody id="tasksTable"></tbody></table></div></div>
+        </div>
+        <div id="gestiones-pane-historial" class="marketing-pane hidden"></div>
+      </section>

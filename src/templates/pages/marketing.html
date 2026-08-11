@@ -1,0 +1,28 @@
+<section id="page-marketing" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Marketing</h2><p class="text-muted" style="margin:0;font-size:12.5px">Bandeja AVAChat, correo, SMS, WhatsApp y campañas en un solo módulo.</p></div><button class="btn btn-primary" onclick="openCampanaModal()">+ Nueva campaña</button></div>
+        <div class="marketing-tabs"><button class="marketing-tab active" onclick="switchMarketingTab('avachat',this)">Bandeja AVAChat</button><button class="marketing-tab" onclick="switchMarketingTab('correo',this)">Correo</button><button class="marketing-tab" onclick="switchMarketingTab('campanas',this)">SMS y WhatsApp</button></div>
+        <div id="marketing-pane-avachat" class="marketing-pane">
+        <div class="page-tools">
+          <div><h2 class="section-title">Bandeja AVAChat</h2><p class="text-muted" style="margin:0;font-size:12.5px">Conversaciones de WhatsApp, correo, SMS y el asistente AVA con contexto comercial.</p></div>
+          <div class="toolbar"><select id="inboxChannel" style="width:auto" onchange="renderInbox()"><option value="">Todos los canales</option><option>WhatsApp</option><option>Email</option><option>SMS</option><option>Asistente AVA</option></select><button class="btn btn-ghost" onclick="markConversationRead()">Marcar como atendida</button></div>
+        </div>
+        <div class="workspace-grid">
+          <div class="workspace-panel">
+            <div class="workspace-head"><div class="table-search" style="max-width:none"><input id="inboxSearch" placeholder="Buscar conversación..." oninput="renderInbox()"><span class="search-icon">&#128269;</span></div></div>
+            <div class="conversation-list" id="conversationList"></div>
+          </div>
+          <div class="workspace-panel">
+            <div class="chat-head"><div><strong id="chatContact">Selecciona una conversación</strong><div class="text-muted" id="chatMeta" style="font-size:11.5px">—</div></div><span id="chatChannel" class="pill pill-info">Canal</span></div>
+            <div class="chat-messages" id="chatMessages"><div class="empty-state">Selecciona una conversación para ver el historial.</div></div>
+            <div class="composer">
+              <textarea id="replyText" placeholder="Escribe o edita tu respuesta..." aria-label="Respuesta al cliente"></textarea>
+              <div style="display:flex;justify-content:space-between;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="btn btn-violet" onclick="generateAVAReply()">&#10024; Responder con AVA</button><button class="btn btn-primary" onclick="sendConversationReply()">Enviar respuesta</button></div>
+              <div class="simulation-note" style="margin-top:7px">&#9432; Envío simulado para esta demostración.</div>
+            </div>
+          </div>
+          <div class="workspace-panel"><div class="workspace-head"><strong>Contexto comercial</strong></div><div class="context-body" id="conversationContext"></div></div>
+        </div>
+        </div>
+        <div id="marketing-pane-correo" class="marketing-pane hidden"></div>
+        <div id="marketing-pane-campanas" class="marketing-pane hidden"></div>
+      </section>
