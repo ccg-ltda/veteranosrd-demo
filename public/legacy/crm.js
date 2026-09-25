@@ -184,25 +184,25 @@ const state = {
     {id:3, nombre:'Carmen Julia Féliz', area:'Apoyo administrativo', horas:9, proxima:'—', estado:'En pausa'}
   ],
   buro: {
-    1:{estado:'Consultado', riesgo:'Bajo', fecha:'2026-08-08', obligaciones:'1 tarjeta de crédito al día, sin otros créditos activos.', alertas:'Sin hallazgos relevantes.'},
-    2:{estado:'Consultado', riesgo:'Medio', fecha:'2026-08-09', obligaciones:'1 préstamo cooperativo vigente, pagos regulares.', alertas:'Nivel de endeudamiento moderado.'},
-    3:{estado:'Consultado', riesgo:'Medio', fecha:'2026-08-10', obligaciones:'Sin obligaciones vigentes registradas.', alertas:'Historial crediticio limitado.'},
+    1:{estado:'Consultado', riesgo:'Bajo', score:88, fecha:'2026-08-08', obligaciones:'1 tarjeta de crédito al día, sin otros créditos activos.', alertas:'Sin hallazgos relevantes.', conclusion:'Perfil de bajo riesgo. Se recomienda continuar con la precalificación.'},
+    2:{estado:'Consultado', riesgo:'Medio', score:62, fecha:'2026-08-09', obligaciones:'1 préstamo cooperativo vigente, pagos regulares.', alertas:'Nivel de endeudamiento moderado.', conclusion:'Riesgo moderado. Puede continuar con precalificación bajo condiciones.'},
+    3:{estado:'Consultado', riesgo:'Medio', score:60, fecha:'2026-08-10', obligaciones:'Sin obligaciones vigentes registradas.', alertas:'Historial crediticio limitado.', conclusion:'Riesgo moderado. Puede continuar con precalificación bajo condiciones.'},
     4:{estado:'Sin consultar'},
     5:{estado:'Sin consultar'},
     6:{estado:'Sin consultar'},
-    7:{estado:'Consultado', riesgo:'Alto', fecha:'2026-08-05', obligaciones:'2 obligaciones vigentes con atrasos reportados.', alertas:'Se detectaron atrasos en los últimos 6 meses.'}
+    7:{estado:'Consultado', riesgo:'Alto', score:34, fecha:'2026-08-05', obligaciones:'2 obligaciones vigentes con atrasos reportados.', alertas:'Se detectaron atrasos en los últimos 6 meses.', conclusion:'Riesgo alto. Se recomienda revisión adicional antes de continuar.'}
   },
   precalificacion: {
-    1:{resultado:'Aprobar', riesgo:'Bajo', capacidad:'Alta', observaciones:'Ingreso estable por pensión, sin obligaciones que comprometan la capacidad de pago.'},
-    2:{resultado:'Aprobar con condiciones', riesgo:'Medio', capacidad:'Media', observaciones:'Capacidad adecuada; se sugiere validar comprobante de pensión actualizado.'},
-    7:{resultado:'Rechazar', riesgo:'Alto', capacidad:'Baja', observaciones:'Atrasos recientes reportados en buró; no cumple el perfil de riesgo esperado.'}
+    1:{resultado:'Aprobar', riesgo:'Bajo', capacidad:'Alta', plazo:24, montoSugerido:14700000, ingresos:1837500, obligaciones:'1 tarjeta de crédito al día.', observaciones:'Ingreso estable por pensión, sin obligaciones que comprometan la capacidad de pago.'},
+    2:{resultado:'Aprobar con condiciones', riesgo:'Medio', capacidad:'Media', plazo:18, montoSugerido:5040000, ingresos:787500, obligaciones:'1 préstamo cooperativo vigente.', observaciones:'Capacidad adecuada; se sugiere validar comprobante de pensión actualizado.'},
+    7:{resultado:'Rechazar', riesgo:'Alto', capacidad:'Baja', plazo:12, montoSugerido:1000000, ingresos:250000, obligaciones:'2 obligaciones vigentes con atrasos reportados.', observaciones:'Atrasos recientes reportados en buró; no cumple el perfil de riesgo esperado.'}
   },
   cobranza: [
-    {id:1, clienteId:1, solicitante:'Cnel. Rafael Ureña', credito:'CR-2026-001', saldo:12800000, proxVencimiento:'2026-09-05', estado:'Al día', historial:[{fecha:'2026-08-05',texto:'Pago recibido a tiempo.'}], promesa:null},
-    {id:2, clienteId:null, solicitante:'Tte. Martha Cabrera', credito:'CR-2025-014', saldo:4200000, proxVencimiento:'2026-08-20', estado:'Próximo a vencer', historial:[{fecha:'2026-08-01',texto:'Recordatorio de pago enviado por SMS.'}], promesa:null},
-    {id:3, clienteId:null, solicitante:'Sgto. Luis Fernández', credito:'CR-2025-009', saldo:6300000, proxVencimiento:'2026-07-15', estado:'Vencido', historial:[{fecha:'2026-07-20',texto:'Llamada realizada, sin respuesta.'}], promesa:null},
-    {id:4, clienteId:null, solicitante:'Rosa Almonte', credito:'CR-2025-003', saldo:4000000, proxVencimiento:'2026-06-01', estado:'En mora', historial:[{fecha:'2026-07-02',texto:'Cliente se compromete a pagar el 15 de agosto.'}], promesa:'2026-08-15 · RD$15,000'},
-    {id:5, clienteId:null, solicitante:'Julio César Paulino', credito:'CR-2025-002', saldo:2000000, proxVencimiento:'2026-05-10', estado:'Vencido', historial:[{fecha:'2026-06-10',texto:'Visita de cobranza realizada, sin acuerdo.'}], promesa:null}
+    {id:1, clienteId:1, solicitante:'Cnel. Rafael Ureña', credito:'CR-2026-001', saldo:12800000, proxVencimiento:'2026-09-05', estado:'Al día', historial:[{fecha:'2026-08-05',texto:'Pago recibido a tiempo.'}], promesa:null, proximaGestion:'2026-09-01 · Recordatorio automático de pago'},
+    {id:2, clienteId:null, solicitante:'Tte. Martha Cabrera', credito:'CR-2025-014', saldo:4200000, proxVencimiento:'2026-08-20', estado:'Próximo a vencer', historial:[{fecha:'2026-08-01',texto:'Recordatorio de pago enviado por SMS.'}], promesa:null, proximaGestion:'2026-08-18 · Llamada de confirmación de pago'},
+    {id:3, clienteId:null, solicitante:'Sgto. Luis Fernández', credito:'CR-2025-009', saldo:6300000, proxVencimiento:'2026-07-15', estado:'Vencido', historial:[{fecha:'2026-07-20',texto:'Llamada realizada, sin respuesta.'}], promesa:null, proximaGestion:'2026-08-12 · Segunda llamada de cobranza'},
+    {id:4, clienteId:null, solicitante:'Rosa Almonte', credito:'CR-2025-003', saldo:4000000, proxVencimiento:'2026-06-01', estado:'En mora', historial:[{fecha:'2026-07-02',texto:'Cliente se compromete a pagar el 15 de agosto.'}], promesa:'2026-08-15 · RD$15,000', proximaGestion:'2026-08-15 · Seguimiento a promesa de pago'},
+    {id:5, clienteId:null, solicitante:'Julio César Paulino', credito:'CR-2025-002', saldo:2000000, proxVencimiento:'2026-05-10', estado:'Vencido', historial:[{fecha:'2026-06-10',texto:'Visita de cobranza realizada, sin acuerdo.'}], promesa:null, proximaGestion:'2026-08-14 · Visita de cobranza de seguimiento'}
   ]
 };
 let avaConectado = false;
@@ -414,10 +414,23 @@ function renderBuro(){
   const rows = state.clientes.filter(function(c){ return (c.contacto+c.empresa).toLowerCase().indexOf(q.toLowerCase())>-1; });
   body.innerHTML = rows.map(function(c){
     const b = state.buro[c.id] || {estado:'Sin consultar'};
-    const accion = b.estado==='Consultado' ? '<button class="btn btn-ghost btn-small" onclick="verResumenBuro('+c.id+')">Ver resumen</button>' : (b.estado==='Consultando...' ? '<span class="text-muted">Consultando…</span>' : '<button class="btn btn-primary btn-small" onclick="consultarBuro('+c.id+')">Consultar buró</button>');
+    const accion = b.estado==='Consultado' ? '<button class="btn btn-ghost btn-small" onclick="event.stopPropagation();verResumenBuro('+c.id+')">Ver resumen</button>' : (b.estado==='Consultando...' ? '<span class="text-muted">Consultando…</span>' : '<button class="btn btn-primary btn-small" onclick="event.stopPropagation();consultarBuro('+c.id+')">Consultar buró</button>');
     const riesgo = b.riesgo ? '<span class="pill '+riesgoColor(b.riesgo)+'">'+b.riesgo+'</span>' : '<span class="text-muted">—</span>';
-    return '<tr><td>'+esc(c.contacto)+'</td><td>'+esc(c.empresa)+'</td><td>'+(b.fecha||'—')+'</td><td>'+riesgo+'</td><td>'+pill(b.estado)+'</td><td>'+accion+'</td></tr>';
-  }).join('') || '<tr><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
+    return '<tr onclick="abrirSolicitanteBuro('+c.id+')"><td data-label="Solicitante">'+esc(c.contacto)+'</td><td data-label="Institución">'+esc(c.empresa)+'</td><td data-label="Fecha de consulta">'+(b.fecha||'—')+'</td><td data-label="Riesgo">'+riesgo+'</td><td data-label="Estado">'+pill(b.estado)+'</td><td data-label="Acción">'+accion+'</td></tr>';
+  }).join('') || '<tr class="no-click"><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
+}
+function abrirSolicitanteBuro(clienteId){
+  const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
+  const b = state.buro[clienteId] || {estado:'Sin consultar'};
+  showDetalle('Solicitante — '+c.contacto, [
+    ['Institución / cuerpo', c.empresa],
+    ['Monto solicitado', formatMoney(c.valor)],
+    ['Etapa del proceso', c.etapa],
+    ['Estado de consulta de buró', b.estado],
+    ['Score de buró (simulado)', b.score!=null ? b.score+'/100' : 'Pendiente de consulta'],
+    ['Nivel de riesgo', b.riesgo || 'Pendiente de consulta'],
+    ['Resumen de obligaciones', b.obligaciones || 'Aún no se ha consultado el buró para este solicitante.']
+  ]);
 }
 function consultarBuro(clienteId){
   state.buro[clienteId] = {estado:'Consultando...'};
@@ -425,7 +438,9 @@ function consultarBuro(clienteId){
   setTimeout(function(){
     const seed = clienteId % 3;
     const riesgo = seed===0?'Bajo':seed===1?'Medio':'Alto';
-    state.buro[clienteId] = {estado:'Consultado', riesgo:riesgo, fecha:todayISO(), obligaciones:'Resumen simulado de obligaciones vigentes ante el sistema financiero.', alertas: riesgo==='Alto' ? 'Se detectaron atrasos recientes.' : 'Sin hallazgos relevantes.'};
+    const score = riesgo==='Bajo'?88:riesgo==='Medio'?62:34;
+    const conclusion = riesgo==='Bajo' ? 'Perfil de bajo riesgo. Se recomienda continuar con la precalificación.' : riesgo==='Medio' ? 'Riesgo moderado. Puede continuar con precalificación bajo condiciones.' : 'Riesgo alto. Se recomienda revisión adicional antes de continuar.';
+    state.buro[clienteId] = {estado:'Consultado', riesgo:riesgo, score:score, fecha:todayISO(), obligaciones:'Resumen simulado de obligaciones vigentes ante el sistema financiero.', alertas: riesgo==='Alto' ? 'Se detectaron atrasos recientes.' : 'Sin hallazgos relevantes.', conclusion:conclusion};
     renderAll();
     showToast('Consulta de buró (simulada) completada');
   }, 900);
@@ -433,7 +448,7 @@ function consultarBuro(clienteId){
 function verResumenBuro(clienteId){
   const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
   const b = state.buro[clienteId] || {};
-  showDetalle('Buró de crédito (simulado) — '+c.contacto, [['Fecha de consulta',b.fecha||'—'],['Nivel de riesgo',b.riesgo||'—'],['Obligaciones / resumen',b.obligaciones||'—'],['Alertas / hallazgos',b.alertas||'Sin hallazgos'],['Nota','Resultado simulado — sin integración real de buró en este demo.']]);
+  showDetalle('Buró de crédito (simulado) — '+c.contacto, [['Fecha de consulta',b.fecha||'—'],['Score de buró (simulado)', b.score!=null?b.score+'/100':'—'],['Nivel de riesgo',b.riesgo||'—'],['Obligaciones / resumen',b.obligaciones||'—'],['Alertas / hallazgos',b.alertas||'Sin hallazgos'],['Conclusión',b.conclusion||'—'],['Nota','Resultado simulado — sin integración real de buró en este demo.']]);
 }
 
 /* ============================= PRECALIFICACIÓN (demo simulado) ============================= */
@@ -444,10 +459,10 @@ function renderPrecalificacion(){
   const rows = state.clientes.filter(function(c){ return (c.contacto+c.empresa).toLowerCase().indexOf(q.toLowerCase())>-1; });
   body.innerHTML = rows.map(function(c){
     const p = state.precalificacion[c.id];
-    const accion = p ? '<button class="btn btn-ghost btn-small" onclick="verDetallePrecalificacion('+c.id+')">Ver detalle</button>' : '<button class="btn btn-primary btn-small" onclick="precalificar('+c.id+')">Precalificar</button>';
+    const accion = p ? '<button class="btn btn-ghost btn-small" onclick="event.stopPropagation();verDetallePrecalificacion('+c.id+')">Ver detalle</button>' : '<button class="btn btn-primary btn-small" onclick="event.stopPropagation();precalificar('+c.id+')">Precalificar</button>';
     const resultado = p ? '<span class="pill '+(p.resultado==='Rechazar'?'pill-bad':p.resultado==='Aprobar'?'pill-success':'pill-warning')+'">'+p.resultado+'</span>' : '<span class="text-muted">Pendiente</span>';
-    return '<tr><td>'+esc(c.contacto)+'</td><td>'+formatMoney(c.valor)+'</td><td>'+(p?p.capacidad:'—')+'</td><td>'+resultado+'</td><td>'+(p?('<span class="pill '+riesgoColor(p.riesgo)+'">'+p.riesgo+'</span>'):'—')+'</td><td>'+accion+'</td></tr>';
-  }).join('') || '<tr><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
+    return '<tr onclick="abrirSolicitudPrecalificacion('+c.id+')"><td data-label="Solicitante">'+esc(c.contacto)+'</td><td data-label="Monto solicitado">'+formatMoney(c.valor)+'</td><td data-label="Capacidad">'+(p?p.capacidad:'—')+'</td><td data-label="Resultado">'+resultado+'</td><td data-label="Riesgo">'+(p?('<span class="pill '+riesgoColor(p.riesgo)+'">'+p.riesgo+'</span>'):'—')+'</td><td data-label="Acción">'+accion+'</td></tr>';
+  }).join('') || '<tr class="no-click"><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
 }
 function precalificar(clienteId){
   const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
@@ -455,14 +470,24 @@ function precalificar(clienteId){
   const riesgo = (b&&b.riesgo) || (c.probabilidad>=60?'Bajo':c.probabilidad>=35?'Medio':'Alto');
   const resultado = riesgo==='Alto' ? 'Rechazar' : (riesgo==='Medio' ? 'Aprobar con condiciones' : 'Aprobar');
   const capacidad = riesgo==='Alto'?'Baja':riesgo==='Medio'?'Media':'Alta';
-  state.precalificacion[clienteId] = {resultado:resultado, riesgo:riesgo, capacidad:capacidad, observaciones:'Resultado simulado a partir de datos de la solicitud y del buró (cuando disponible). No representa una fórmula financiera real.'};
+  const plazo = riesgo==='Alto'?12:riesgo==='Medio'?18:24;
+  const montoSugerido = riesgo==='Alto' ? Math.round(c.valor*0.5) : (riesgo==='Medio' ? Math.round(c.valor*0.8) : c.valor);
+  const ingresos = Math.round(c.valor/8);
+  const obligaciones = (b&&b.obligaciones) || 'Sin obligaciones vigentes registradas.';
+  state.precalificacion[clienteId] = {resultado:resultado, riesgo:riesgo, capacidad:capacidad, plazo:plazo, montoSugerido:montoSugerido, ingresos:ingresos, obligaciones:obligaciones, observaciones:'Resultado simulado a partir de datos de la solicitud y del buró (cuando disponible). No representa una fórmula financiera real.'};
   renderAll();
   showToast('Precalificación (simulada) generada para '+c.contacto);
+}
+function abrirSolicitudPrecalificacion(clienteId){
+  const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
+  const p = state.precalificacion[clienteId];
+  if(!p){ showDetalle('Solicitud — '+c.contacto, [['Monto solicitado',formatMoney(c.valor)],['Etapa del proceso',c.etapa],['Estado de precalificación','Pendiente — aún no se ha ejecutado la precalificación.']]); return; }
+  verDetallePrecalificacion(clienteId);
 }
 function verDetallePrecalificacion(clienteId){
   const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
   const p = state.precalificacion[clienteId]; if(!p) return;
-  showDetalle('Precalificación (simulada) — '+c.contacto, [['Monto solicitado',formatMoney(c.valor)],['Resultado',p.resultado],['Nivel de riesgo',p.riesgo],['Capacidad estimada',p.capacidad],['Observaciones',p.observaciones],['Siguiente paso', p.resultado==='Rechazar' ? 'Notificar al solicitante' : 'Enviar a gestión / aprobación']]);
+  showDetalle('Precalificación (simulada) — '+c.contacto, [['Monto solicitado',formatMoney(c.valor)],['Ingresos mensuales estimados',formatMoney(p.ingresos)],['Obligaciones vigentes',p.obligaciones],['Plazo sugerido',p.plazo+' meses'],['Capacidad de pago estimada',p.capacidad],['Nivel de riesgo',p.riesgo],['Monto sugerido',formatMoney(p.montoSugerido)],['Estado de precalificación',p.resultado],['Observaciones',p.observaciones],['Siguiente paso', p.resultado==='Rechazar' ? 'Notificar al solicitante' : 'Enviar a gestión / aprobación']]);
 }
 
 /* ============================= COBRANZA / CARTERA (demo simulado) ============================= */
@@ -470,10 +495,12 @@ function renderCobranza(){
   const strip = document.getElementById('cobranzaKpis');
   if(strip){
     const total = state.cobranza.reduce(function(s,x){ return s+Number(x.saldo); },0);
+    const activos = state.cobranza.length;
     const alDia = state.cobranza.filter(function(x){ return x.estado==='Al día'; }).length;
     const proximos = state.cobranza.filter(function(x){ return x.estado==='Próximo a vencer'; }).length;
-    const vencidos = state.cobranza.filter(function(x){ return x.estado==='Vencido'||x.estado==='En mora'; }).length;
-    strip.innerHTML = '<div class="metric-cell"><span>Cartera total</span><strong>'+formatMoney(total)+'</strong></div><div class="metric-cell"><span>Créditos al día</span><strong>'+alDia+'</strong></div><div class="metric-cell"><span>Próximos vencimientos</span><strong>'+proximos+'</strong></div><div class="metric-cell"><span>Vencidos / en mora</span><strong>'+vencidos+'</strong></div>';
+    const enMora = state.cobranza.filter(function(x){ return x.estado==='Vencido'||x.estado==='En mora'; });
+    const montoMora = enMora.reduce(function(s,x){ return s+Number(x.saldo); },0);
+    strip.innerHTML = '<div class="metric-cell"><span>Cartera total</span><strong>'+formatMoney(total)+'</strong></div><div class="metric-cell"><span>Créditos activos</span><strong>'+activos+'</strong></div><div class="metric-cell"><span>Al día / próx. vencimiento</span><strong>'+alDia+' / '+proximos+'</strong></div><div class="metric-cell"><span>Monto en mora ('+enMora.length+')</span><strong>'+formatMoney(montoMora)+'</strong></div>';
   }
   const body = document.getElementById('cobranzaTable');
   if(!body) return;
@@ -481,13 +508,22 @@ function renderCobranza(){
   const rows = state.cobranza.filter(function(x){ return (x.solicitante+x.credito).toLowerCase().indexOf(q.toLowerCase())>-1; });
   const estadoPill = function(e){ return e==='Al día'?'pill-success':e==='Próximo a vencer'?'pill-warning':'pill-bad'; };
   body.innerHTML = rows.map(function(x){
-    return '<tr><td>'+esc(x.solicitante)+'</td><td>'+esc(x.credito)+'</td><td>'+formatMoney(x.saldo)+'</td><td>'+x.proxVencimiento+'</td><td><span class="pill '+estadoPill(x.estado)+'">'+x.estado+'</span></td><td><button class="btn btn-ghost btn-small" onclick="verGestionCobranza('+x.id+')">Ver gestión</button></td></tr>';
-  }).join('') || '<tr><td colspan="6" class="empty-state">Sin cuentas registradas</td></tr>';
+    const dias = diasMora(x.proxVencimiento);
+    const moraLabel = (x.estado==='Vencido'||x.estado==='En mora') ? '<div class="text-muted" style="font-size:10.5px;margin-top:2px">'+dias+' días de mora</div>' : '';
+    return '<tr onclick="verGestionCobranza('+x.id+')"><td data-label="Cliente">'+esc(x.solicitante)+'</td><td data-label="Crédito">'+esc(x.credito)+'</td><td data-label="Saldo">'+formatMoney(x.saldo)+'</td><td data-label="Próx. vencimiento">'+x.proxVencimiento+moraLabel+'</td><td data-label="Estado"><span class="pill '+estadoPill(x.estado)+'">'+x.estado+'</span></td><td data-label="Acción"><button class="btn btn-ghost btn-small" onclick="event.stopPropagation();verGestionCobranza('+x.id+')">Ver gestión</button></td></tr>';
+  }).join('') || '<tr class="no-click"><td colspan="6" class="empty-state">Sin cuentas registradas</td></tr>';
+}
+function diasMora(fechaVencimiento){
+  const hoy = new Date(todayISO());
+  const venc = new Date(fechaVencimiento);
+  const diff = Math.round((hoy-venc)/86400000);
+  return diff>0 ? diff : 0;
 }
 function verGestionCobranza(id){
   const x = state.cobranza.find(function(y){ return y.id===id; }); if(!x) return;
   const hist = (x.historial||[]).map(function(h){ return h.fecha+' — '+h.texto; }).join('<br>') || 'Sin contactos registrados';
-  showDetalle('Cobranza — '+x.solicitante, [['Crédito',x.credito],['Saldo',formatMoney(x.saldo)],['Próximo vencimiento',x.proxVencimiento],['Estado',x.estado],['Historial de contacto',hist],['Promesa de pago',x.promesa||'Sin acuerdo registrado']]);
+  const dias = diasMora(x.proxVencimiento);
+  showDetalle('Cobranza — '+x.solicitante, [['Crédito',x.credito],['Saldo pendiente',formatMoney(x.saldo)],['Próximo vencimiento',x.proxVencimiento],['Días de mora', (x.estado==='Vencido'||x.estado==='En mora') ? dias+' días' : 'Sin mora'],['Estado de cartera',x.estado],['Historial de contacto / gestión',hist],['Promesa de pago',x.promesa||'Sin acuerdo registrado'],['Próxima gestión',x.proximaGestion||'Sin próxima gestión programada']]);
 }
 function registrarPromesaPago(){ showToast('Registro de promesas de pago disponible en la versión completa'); }
 
