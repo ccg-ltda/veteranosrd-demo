@@ -1,0 +1,18 @@
+<section id="page-salud" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Salud</h2><p class="text-muted" style="margin:0;font-size:12.5px">Citas y servicios médicos de los afiliados (datos simulados).</p></div><button class="btn btn-primary" onclick="nuevaCitaSalud()">+ Nueva cita</button></div>
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-search">
+              <input type="text" placeholder="Buscar afiliado o servicio..." id="searchSalud" oninput="renderSalud()">
+              <span class="search-icon">&#128269;</span>
+            </div>
+          </div>
+          <div class="table-scroll">
+          <table class="mobile-cards">
+            <thead><tr><th>Afiliado</th><th>Servicio</th><th>Fecha</th><th>Lugar</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody id="saludTable"></tbody>
+          </table>
+          </div>
+        </div>
+        <div class="simulation-note" style="margin-top:10px">&#9432; Información simulada para efectos de demostración.</div>
+      </section>

@@ -2,19 +2,19 @@
         <div class="table-container">
           <div class="table-header">
             <div class="table-search">
-              <input type="text" placeholder="Buscar empresa o NIT..." id="searchEmpresas" oninput="renderEmpresasTable()">
+              <input type="text" placeholder="Buscar institución aliada o código..." id="searchEmpresas" oninput="renderEmpresasTable()">
               <span class="search-icon">&#128269;</span>
             </div>
             <div style="display:flex;gap:8px;flex-wrap:wrap">
               <button class="btn btn-ghost btn-small" onclick="document.getElementById('importEmpresasFile').click()">&#8593; Importar CSV</button>
               <input type="file" id="importEmpresasFile" accept=".csv" class="hidden" onchange="importEmpresasCSV(this.files[0])">
               <button class="btn btn-ghost btn-small" onclick="exportEmpresasCSV()">&#8595; Exportar CSV</button>
-              <button class="btn btn-primary btn-small" onclick="openEmpresaModal()">+ Nueva</button>
+              <button class="btn btn-primary btn-small" onclick="openEmpresaModal()">+ Nueva institución aliada</button>
             </div>
           </div>
           <div class="table-scroll">
           <table class="mobile-cards">
-            <thead><tr><th>Razón social</th><th>NIT</th><th>Sector</th><th>Ciudad</th><th>Contactos</th><th>IA</th><th>Historial</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Institución / Aliado</th><th>Código</th><th>Área</th><th>Ciudad</th><th>Contactos</th><th>AVA</th><th>Historial</th><th>Acciones</th></tr></thead>
             <tbody id="empresasTable"></tbody>
           </table>
           </div>

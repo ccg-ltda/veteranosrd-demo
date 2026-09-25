@@ -41,20 +41,20 @@ function changeCurrency(cur){
 }
 
 /* ============================= ESTADO ============================= */
-const ETAPAS = ['Prospecto','Contactado','Negociación','Propuesta','Cerrado'];
-const ETAPA_COLOR = {'Prospecto':'#5a6b85','Contactado':'#2f6fed','Negociación':'#e0a324','Propuesta':'#7c3aed','Cerrado':'#17a673'};
-const CANAL_COLOR = {'WhatsApp':'#17a673','Email':'#2f6fed','Llamada':'#e0a324','Bot IA':'#7c3aed','Ads':'#4f8bff','SMS':'#c77d1a','Presencial':'#5a6b85'};
+const ETAPAS = ['Nueva solicitud','En revisión','Buró consultado','Precalificada','Aprobada'];
+const ETAPA_COLOR = {'Nueva solicitud':'#5a6b85','En revisión':'#2f6fed','Buró consultado':'#4f8bff','Precalificada':'#e0a324','Aprobada':'#17a673'};
+const CANAL_COLOR = {'WhatsApp':'#17a673','Email':'#2f6fed','Llamada':'#e0a324','Bot IA':'#d92440','Ads':'#4f8bff','SMS':'#c77d1a','Presencial':'#5a6b85'};
 
 const state = {
-  currency: 'COP',
+  currency: 'DOP',
   clientes: [
-    {id:1, empresa:'Tech Innovate S.A.', empresaId:1, contacto:'Carlos Díaz', email:'carlos@techinnovate.com', telefono:'+57 1 234 5678', estado:'Activo', etapa:'Cerrado', valor:85000000, probabilidad:100, canal:'WhatsApp', notas:[{fecha:'10 Ago 2026',texto:'Cliente muy satisfecho con el servicio contratado.'}], actividad:[{fecha:'11 Ago 2026 · 09:20',texto:'Reunión de cierre de contrato realizada.'},{fecha:'08 Ago 2026 · 15:00',texto:'Propuesta comercial enviada por correo.'}]},
-    {id:2, empresa:'Retail Commerce', empresaId:2, contacto:'María López', email:'maria@retail.com', telefono:'+57 1 987 6543', estado:'Activo', etapa:'Propuesta', valor:62000000, probabilidad:65, canal:'Email', notas:[], actividad:[{fecha:'11 Ago 2026 · 11:00',texto:'Solicitó demostración de la suscripción empresarial.'}]},
-    {id:3, empresa:'Soluciones Digitales', empresaId:3, contacto:'Juan Pérez', email:'juan@soluciones.com', telefono:'+57 1 555 4321', estado:'Prospecto', etapa:'Negociación', valor:40000000, probabilidad:45, canal:'Llamada', notas:[], actividad:[]},
-    {id:4, empresa:'E-Commerce Global', empresaId:null, contacto:'Ana Silva', email:'ana@ecommerce.com', telefono:'+57 1 789 0123', estado:'Prospecto', etapa:'Contactado', valor:30000000, probabilidad:33, canal:'Ads', notas:[], actividad:[]},
-    {id:5, empresa:'Grupo Náutica', empresaId:null, contacto:'Carlos Pérez', email:'carlos@gruponautica.com', telefono:'+57 1 321 9876', estado:'Prospecto', etapa:'Contactado', valor:34000000, probabilidad:33, canal:'Llamada', notas:[], actividad:[]},
-    {id:6, empresa:'InnovaLogística', empresaId:null, contacto:'Ana Martínez', email:'ana@innovalogistica.com', telefono:'+57 1 654 3210', estado:'Prospecto', etapa:'Prospecto', valor:15700000, probabilidad:58, canal:'Bot IA', notas:[], actividad:[]},
-    {id:7, empresa:'Multipacking S.A.', empresaId:null, contacto:'Juan Ríos', email:'juan@multipacking.com', telefono:'+57 1 111 2222', estado:'Activo', etapa:'Cerrado', valor:12000000, probabilidad:100, canal:'Email', notas:[], actividad:[]}
+    {id:1, empresa:'Ejército Nacional — Retiro', empresaId:1, contacto:'Cnel. Rafael Ureña', email:'rafael.urena@correo.com', telefono:'+1 809 555 0101', estado:'Activo', etapa:'Aprobada', valor:14700000, probabilidad:100, canal:'WhatsApp', notas:[{fecha:'10 Ago 2026',texto:'Crédito aprobado y desembolsado. Solicitante conforme con las condiciones.'}], actividad:[{fecha:'11 Ago 2026 · 09:20',texto:'Aprobación final confirmada por el comité de crédito.'},{fecha:'08 Ago 2026 · 15:00',texto:'Precalificación completada con resultado favorable.'}]},
+    {id:2, empresa:'Marina de Guerra — Retiro', empresaId:2, contacto:'Sgto. Mayor Ana Ventura', email:'ana.ventura@correo.com', telefono:'+1 809 555 0102', estado:'Prospecto', etapa:'Precalificada', valor:6300000, probabilidad:65, canal:'Email', notas:[], actividad:[{fecha:'11 Ago 2026 · 11:00',texto:'Precalificación estimada: capacidad de pago adecuada al monto solicitado.'}]},
+    {id:3, empresa:'Policía Nacional — Retiro', empresaId:3, contacto:'Cap. Pedro Julián', email:'pedro.julian@correo.com', telefono:'+1 809 555 0103', estado:'Prospecto', etapa:'Buró consultado', valor:4000000, probabilidad:45, canal:'Llamada', notas:[], actividad:[]},
+    {id:4, empresa:'Ejército Nacional — Retiro', empresaId:null, contacto:'Raso Miguel Santana', email:'miguel.santana@correo.com', telefono:'+1 809 555 0104', estado:'Prospecto', etapa:'En revisión', valor:2700000, probabilidad:33, canal:'Bot IA', notas:[], actividad:[]},
+    {id:5, empresa:'Policía Nacional — Retiro', empresaId:null, contacto:'Elena Reyes', email:'elena.reyes@correo.com', telefono:'+1 809 555 0105', estado:'Prospecto', etapa:'Nueva solicitud', valor:8000000, probabilidad:33, canal:'Bot IA', notas:[], actividad:[]},
+    {id:6, empresa:'Marina de Guerra — Retiro', empresaId:null, contacto:'José Manuel Cabrera', email:'jose.cabrera@correo.com', telefono:'+1 809 555 0106', estado:'Prospecto', etapa:'En revisión', valor:5000000, probabilidad:58, canal:'Bot IA', notas:[], actividad:[]},
+    {id:7, empresa:'Ejército Nacional — Retiro', empresaId:null, contacto:'Carmen Julia Féliz', email:'carmen.feliz@correo.com', telefono:'+1 809 555 0107', estado:'Inactivo', etapa:'Nueva solicitud', valor:2000000, probabilidad:100, canal:'Email', notas:[], actividad:[]}
   ],
   empresas: [
     {id:1, nombre:'Tech Innovate S.A.', nit:'900.123.456-7', sector:'Tecnología', ciudad:'Bogotá, Colombia', enriquecido:false, actividad:[]},
@@ -84,30 +84,38 @@ const state = {
   },
   campanas: [],
   conversations: [
-    {id:1,clienteId:1,nombre:'Carlos Díaz',empresa:'Tech Innovate S.A.',canal:'WhatsApp',etapa:'Cerrado',producto:'Servicio de soporte',proxima:'Llamar mañana, 09:30',unread:true,messages:[{dir:'outgoing',text:'Hola Carlos, te compartí la propuesta actualizada.',time:'Ayer 16:20'},{dir:'incoming',text:'¿Me puedes enviar nuevamente la propuesta?',time:'Hoy 10:15'}]},
-    {id:2,clienteId:2,nombre:'María López',empresa:'Retail Commerce',canal:'Email',etapa:'Propuesta',producto:'Suscripción empresarial',proxima:'Demostración, jueves 10:00',unread:true,messages:[{dir:'outgoing',text:'María, ya reservamos un espacio para mostrar el servicio.',time:'Ayer 09:12'},{dir:'incoming',text:'Nos gustaría hacer una demostración.',time:'Hoy 09:42'}]},
-    {id:3,clienteId:3,nombre:'Roberto Gómez',empresa:'Soluciones Digitales',canal:'SMS',etapa:'Negociación',producto:'Consultoría estratégica',proxima:'Llamar mañana, 11:00',unread:false,messages:[{dir:'incoming',text:'Llámame mañana.',time:'Ayer 17:08'}]},
-    {id:4,clienteId:6,nombre:'Ana Martínez',empresa:'InnovaLogística',canal:'Asistente AVA',etapa:'Prospecto',producto:'Capacitación corporativa',proxima:'Calificar necesidad hoy',unread:true,messages:[{dir:'incoming',text:'Necesito organizar el seguimiento de mi equipo comercial.',time:'Hoy 08:55'},{dir:'outgoing',text:'AVA registró tu solicitud y un asesor te contactará hoy.',time:'Hoy 08:56'}]}
+    {id:1,clienteId:5,nombre:'Elena Reyes',empresa:'Policía Nacional — Retiro',canal:'Asistente AVA',etapa:'Nueva solicitud',producto:'Crédito personal',proxima:'Continuar captura de documentos',unread:true,messages:[
+      {dir:'outgoing',text:'Hola, soy AVA 👋 Voy a ayudarte a solicitar tu crédito. ¿Me confirmas tu nombre completo y número de cédula?',time:'Hoy 08:40'},
+      {dir:'incoming',text:'Elena Reyes, cédula 001-1234567-8.',time:'Hoy 08:41'},
+      {dir:'outgoing',text:'Gracias, Elena. ¿Cuál es el monto que deseas solicitar y para qué lo necesitas?',time:'Hoy 08:42'},
+      {dir:'incoming',text:'Necesito RD$120,000 para gastos médicos familiares.',time:'Hoy 08:43'},
+      {dir:'outgoing',text:'Entendido. Para continuar necesito tu información laboral o de ingresos: ¿pensión, salario u otra fuente?',time:'Hoy 08:44'},
+      {dir:'incoming',text:'Pensión de la Policía Nacional.',time:'Hoy 08:45'},
+      {dir:'outgoing',text:'Perfecto. Por último, ¿puedes adjuntar tu cédula y el último comprobante de pensión? Con eso genero tu prospecto y continúo con la consulta de buró.',time:'Hoy 08:46'}
+    ]},
+    {id:2,clienteId:2,nombre:'Ana Ventura',empresa:'Marina de Guerra — Retiro',canal:'Email',etapa:'Precalificada',producto:'Crédito personal',proxima:'Confirmar resultado de precalificación',unread:true,messages:[{dir:'outgoing',text:'Sra. Ventura, su precalificación quedó lista con resultado favorable.',time:'Ayer 09:12'},{dir:'incoming',text:'Perfecto, ¿cuáles serían los próximos pasos?',time:'Hoy 09:42'}]},
+    {id:3,clienteId:3,nombre:'Pedro Julián',empresa:'Policía Nacional — Retiro',canal:'SMS',etapa:'Buró consultado',producto:'Crédito personal',proxima:'Llamar mañana, 11:00',unread:false,messages:[{dir:'incoming',text:'Llámeme mañana para revisar el resultado del buró.',time:'Ayer 17:08'}]},
+    {id:4,clienteId:6,nombre:'José Manuel Cabrera',empresa:'Marina de Guerra — Retiro',canal:'Asistente AVA',etapa:'En revisión',producto:'Crédito personal',proxima:'Calificar necesidad hoy',unread:true,messages:[{dir:'incoming',text:'Quiero saber si mi solicitud de crédito sigue en revisión.',time:'Hoy 08:55'},{dir:'outgoing',text:'AVA confirma: tu solicitud está en revisión, un asesor te contactará hoy.',time:'Hoy 08:56'}]}
   ],
   tasks: [
-    {id:1,tipo:'Enviar propuesta',cliente:'María López',empresa:'Retail Commerce',responsable:'Katherine Silva',fecha:'2026-08-11',hora:'09:30',prioridad:'Alta',estado:'Pendiente'},
-    {id:2,tipo:'Llamar cliente',cliente:'Roberto Gómez',empresa:'Soluciones Digitales',responsable:'Sarah Chen',fecha:'2026-08-11',hora:'11:00',prioridad:'Alta',estado:'En progreso'},
-    {id:3,tipo:'Preparar demostración',cliente:'Ana Martínez',empresa:'InnovaLogística',responsable:'Katherine Silva',fecha:'2026-08-11',hora:'14:30',prioridad:'Media',estado:'Pendiente'},
-    {id:4,tipo:'Enviar cotización',cliente:'Carlos Díaz',empresa:'Tech Innovate S.A.',responsable:'Carlos Méndez',fecha:'2026-08-11',hora:'16:00',prioridad:'Media',estado:'Completada'},
-    {id:5,tipo:'Realizar seguimiento',cliente:'Juan Pérez',empresa:'Soluciones Digitales',responsable:'Sarah Chen',fecha:'2026-08-12',hora:'10:15',prioridad:'Baja',estado:'Pendiente'}
+    {id:1,tipo:'Consultar buró',cliente:'Ana Ventura',empresa:'Marina de Guerra — Retiro',responsable:'Katherine Silva',fecha:'2026-08-11',hora:'09:30',prioridad:'Alta',estado:'Pendiente'},
+    {id:2,tipo:'Llamar solicitante',cliente:'Pedro Julián',empresa:'Policía Nacional — Retiro',responsable:'Sarah Chen',fecha:'2026-08-11',hora:'11:00',prioridad:'Alta',estado:'En progreso'},
+    {id:3,tipo:'Revisar documentos',cliente:'José Manuel Cabrera',empresa:'Marina de Guerra — Retiro',responsable:'Katherine Silva',fecha:'2026-08-11',hora:'14:30',prioridad:'Media',estado:'Pendiente'},
+    {id:4,tipo:'Notificar aprobación',cliente:'Rafael Ureña',empresa:'Ejército Nacional — Retiro',responsable:'Carlos Méndez',fecha:'2026-08-11',hora:'16:00',prioridad:'Media',estado:'Completada'},
+    {id:5,tipo:'Dar seguimiento a mora',cliente:'Julio César Paulino',empresa:'Cartera',responsable:'Sarah Chen',fecha:'2026-08-12',hora:'10:15',prioridad:'Baja',estado:'Pendiente'}
   ],
   products: [
-    {id:1,nombre:'Suscripción empresarial',descripcion:'Acceso periódico a una solución o plataforma para equipos.',precio:16000000,impuesto:19,comision:6,estado:'Activo'},
-    {id:2,nombre:'Equipos y suministros',descripcion:'Paquete de equipos, materiales e insumos para la operación.',precio:28000000,impuesto:19,comision:7,estado:'Activo'},
-    {id:3,nombre:'Servicio de soporte',descripcion:'Acompañamiento operativo, mantenimiento y atención especializada.',precio:42000000,impuesto:19,comision:5,estado:'Activo'},
-    {id:4,nombre:'Consultoría estratégica',descripcion:'Diagnóstico, diseño de soluciones y plan de mejoramiento.',precio:12000000,impuesto:19,comision:8,estado:'Activo'},
-    {id:5,nombre:'Capacitación corporativa',descripcion:'Formación práctica para equipos comerciales y operativos.',precio:9000000,impuesto:19,comision:4,estado:'Activo'}
+    {id:1,nombre:'Crédito personal',descripcion:'Préstamo de libre destino para necesidades personales o familiares.',precio:8000000,impuesto:0,comision:0,estado:'Activo'},
+    {id:2,nombre:'Crédito consumo',descripcion:'Financiamiento para compra de bienes o servicios de consumo.',precio:5000000,impuesto:0,comision:0,estado:'Activo'},
+    {id:3,nombre:'Refinanciamiento',descripcion:'Consolidación de obligaciones vigentes en una sola cuota.',precio:12000000,impuesto:0,comision:0,estado:'Activo'},
+    {id:4,nombre:'Crédito de emergencia',descripcion:'Desembolso rápido para necesidades urgentes (salud, imprevistos).',precio:3000000,impuesto:0,comision:0,estado:'Activo'},
+    {id:5,nombre:'Crédito para vivienda',descripcion:'Financiamiento para mejora, ampliación o adquisición de vivienda.',precio:20000000,impuesto:0,comision:0,estado:'Activo'}
   ],
   quotes: [
-    {id:1,numero:'COT-2026-014',cliente:'María López',empresa:'Retail Commerce',producto:'Suscripción empresarial',cantidad:1,precio:16000000,descuento:0,impuesto:19,subtotal:16000000,total:19040000,fecha:'2026-08-10',estado:'Enviada'},
-    {id:2,numero:'COT-2026-013',cliente:'Carlos Díaz',empresa:'Tech Innovate S.A.',producto:'Servicio de soporte',cantidad:1,precio:42000000,descuento:5,impuesto:19,subtotal:39900000,total:47481000,fecha:'2026-08-08',estado:'Aceptada'},
-    {id:3,numero:'COT-2026-012',cliente:'Juan Pérez',empresa:'Soluciones Digitales',producto:'Consultoría estratégica',cantidad:2,precio:12000000,descuento:0,impuesto:19,subtotal:24000000,total:28560000,fecha:'2026-08-06',estado:'Borrador'},
-    {id:4,numero:'COT-2026-011',cliente:'Ana Silva',empresa:'E-Commerce Global',producto:'Equipos y suministros',cantidad:1,precio:28000000,descuento:0,impuesto:19,subtotal:28000000,total:33320000,fecha:'2026-08-03',estado:'Rechazada'}
+    {id:1,numero:'CR-2026-014',cliente:'Ana Ventura',empresa:'Marina de Guerra — Retiro',producto:'Crédito personal',cantidad:18,precio:6300000,descuento:0,impuesto:0,subtotal:6300000,total:6300000,fecha:'2026-08-10',estado:'Enviada'},
+    {id:2,numero:'CR-2026-013',cliente:'Rafael Ureña',empresa:'Ejército Nacional — Retiro',producto:'Crédito de emergencia',cantidad:12,precio:14700000,descuento:0,impuesto:0,subtotal:14700000,total:14700000,fecha:'2026-08-08',estado:'Aceptada'},
+    {id:3,numero:'CR-2026-012',cliente:'Pedro Julián',empresa:'Policía Nacional — Retiro',producto:'Crédito consumo',cantidad:24,precio:4000000,descuento:0,impuesto:0,subtotal:4000000,total:4000000,fecha:'2026-08-06',estado:'Borrador'},
+    {id:4,numero:'CR-2026-011',cliente:'Carmen Julia Féliz',empresa:'Ejército Nacional — Retiro',producto:'Crédito de emergencia',cantidad:6,precio:2000000,descuento:0,impuesto:0,subtotal:2000000,total:2000000,fecha:'2026-08-03',estado:'Rechazada'}
   ],
   gestiones: [
     {id:1, clienteId:1, empresaId:null, empresa:'Tech Innovate S.A.', contacto:'Carlos Díaz', estado:'Cerrado', producto:'Servicio de soporte', canal:'Llamada', proxFecha:'', asesor:'Katherine Silva', detalle:'Cierre comercial confirmado. Cliente satisfecho con la demostración.', fecha:'11 Ago 2026'},
@@ -157,6 +165,44 @@ const state = {
     {id:1, nombre:'Linda Pérez', correo:'linda@ccgrupo.com', rol:'Administrador', estado:'Activo'},
     {id:2, nombre:'Katherine Silva', correo:'katherine@ccgrupo.com', rol:'Asesor', estado:'Activo'},
     {id:3, nombre:'Sarah Chen', correo:'sarah@ccgrupo.com', rol:'Supervisor', estado:'Activo'}
+  ],
+  salud: [
+    {id:1, afiliado:'Coronel Rafael Ureña', servicio:'Consulta medicina general', fecha:'2026-08-12', hora:'09:00', lugar:'Clínica convenio Santo Domingo', estado:'Confirmada'},
+    {id:2, afiliado:'Sargento Mayor Ana Ventura', servicio:'Control cardiológico', fecha:'2026-08-13', hora:'11:30', lugar:'Centro médico Kennedy', estado:'Pendiente'},
+    {id:3, afiliado:'Capitán Pedro Julián', servicio:'Terapia física', fecha:'2026-08-14', hora:'15:00', lugar:'Clínica convenio Santo Domingo', estado:'Confirmada'},
+    {id:4, afiliado:'Raso Miguel Santana', servicio:'Consulta psicológica (CODOPSI)', fecha:'2026-08-15', hora:'10:00', lugar:'Sede Hermandad, Av. JFK', estado:'Pendiente'}
+  ],
+  cooperativa: [
+    {id:1, afiliado:'Coronel Rafael Ureña', tipoAporte:'Aporte mensual', monto:2500, fecha:'2026-08-01', estado:'Al día'},
+    {id:2, afiliado:'Sargento Mayor Ana Ventura', tipoAporte:'Certificado de ahorro', monto:15000, fecha:'2026-07-20', estado:'Al día'},
+    {id:3, afiliado:'Capitán Pedro Julián', tipoAporte:'Aporte mensual', monto:2500, fecha:'2026-07-01', estado:'En mora'},
+    {id:4, afiliado:'Raso Miguel Santana', tipoAporte:'Préstamo cooperativo (COOPERA)', monto:45000, fecha:'2026-06-15', estado:'Al día'}
+  ],
+  voluntariado: [
+    {id:1, nombre:'Elena Reyes', area:'Salud y bienestar', horas:32, proxima:'2026-08-16 · Jornada médica', estado:'Activo'},
+    {id:2, nombre:'José Manuel Cabrera', area:'Logística de eventos', horas:18, proxima:'2026-08-20 · Entrega de ayudas', estado:'Activo'},
+    {id:3, nombre:'Carmen Julia Féliz', area:'Apoyo administrativo', horas:9, proxima:'—', estado:'En pausa'}
+  ],
+  buro: {
+    1:{estado:'Consultado', riesgo:'Bajo', fecha:'2026-08-08', obligaciones:'1 tarjeta de crédito al día, sin otros créditos activos.', alertas:'Sin hallazgos relevantes.'},
+    2:{estado:'Consultado', riesgo:'Medio', fecha:'2026-08-09', obligaciones:'1 préstamo cooperativo vigente, pagos regulares.', alertas:'Nivel de endeudamiento moderado.'},
+    3:{estado:'Consultado', riesgo:'Medio', fecha:'2026-08-10', obligaciones:'Sin obligaciones vigentes registradas.', alertas:'Historial crediticio limitado.'},
+    4:{estado:'Sin consultar'},
+    5:{estado:'Sin consultar'},
+    6:{estado:'Sin consultar'},
+    7:{estado:'Consultado', riesgo:'Alto', fecha:'2026-08-05', obligaciones:'2 obligaciones vigentes con atrasos reportados.', alertas:'Se detectaron atrasos en los últimos 6 meses.'}
+  },
+  precalificacion: {
+    1:{resultado:'Aprobar', riesgo:'Bajo', capacidad:'Alta', observaciones:'Ingreso estable por pensión, sin obligaciones que comprometan la capacidad de pago.'},
+    2:{resultado:'Aprobar con condiciones', riesgo:'Medio', capacidad:'Media', observaciones:'Capacidad adecuada; se sugiere validar comprobante de pensión actualizado.'},
+    7:{resultado:'Rechazar', riesgo:'Alto', capacidad:'Baja', observaciones:'Atrasos recientes reportados en buró; no cumple el perfil de riesgo esperado.'}
+  },
+  cobranza: [
+    {id:1, clienteId:1, solicitante:'Cnel. Rafael Ureña', credito:'CR-2026-001', saldo:12800000, proxVencimiento:'2026-09-05', estado:'Al día', historial:[{fecha:'2026-08-05',texto:'Pago recibido a tiempo.'}], promesa:null},
+    {id:2, clienteId:null, solicitante:'Tte. Martha Cabrera', credito:'CR-2025-014', saldo:4200000, proxVencimiento:'2026-08-20', estado:'Próximo a vencer', historial:[{fecha:'2026-08-01',texto:'Recordatorio de pago enviado por SMS.'}], promesa:null},
+    {id:3, clienteId:null, solicitante:'Sgto. Luis Fernández', credito:'CR-2025-009', saldo:6300000, proxVencimiento:'2026-07-15', estado:'Vencido', historial:[{fecha:'2026-07-20',texto:'Llamada realizada, sin respuesta.'}], promesa:null},
+    {id:4, clienteId:null, solicitante:'Rosa Almonte', credito:'CR-2025-003', saldo:4000000, proxVencimiento:'2026-06-01', estado:'En mora', historial:[{fecha:'2026-07-02',texto:'Cliente se compromete a pagar el 15 de agosto.'}], promesa:'2026-08-15 · RD$15,000'},
+    {id:5, clienteId:null, solicitante:'Julio César Paulino', credito:'CR-2025-002', saldo:2000000, proxVencimiento:'2026-05-10', estado:'Vencido', historial:[{fecha:'2026-06-10',texto:'Visita de cobranza realizada, sin acuerdo.'}], promesa:null}
   ]
 };
 let avaConectado = false;
@@ -297,7 +343,7 @@ function navigate(page){
   document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
   const navBtn = document.querySelector('.nav-item[data-page="'+page+'"]');
   if(navBtn) navBtn.classList.add('active');
-  const titles = {dashboard:'Panel de control', pipeline:'Proceso Comercial', agenda:'Agenda', empresas:'Empresas', clientes:'Contactos', gestiones:'Gestiones Comerciales', cotizaciones:'Cotizaciones', productos:'Productos y servicios', marketing:'Marketing', reportes:'Reportes', ads:'Clientes ADS', automatizaciones:'Automatizaciones', apis:'APIs', config:'Configuración'};
+  const titles = {dashboard:'Panel institucional', pipeline:'Prospectos / Leads', agenda:'Agenda', empresas:'Convenios e Instituciones Aliadas', clientes:'Solicitudes de Crédito', gestiones:'Gestiones', cotizaciones:'Créditos', productos:'Beneficios y Programas', marketing:'AVA', reportes:'Reportes', ads:'Clientes ADS', automatizaciones:'Automatizaciones', apis:'APIs', config:'Configuración', salud:'Salud', cooperativa:'Cooperativa', voluntariado:'Voluntariado', buro:'Buró de Crédito', precalificacion:'Precalificación', cobranza:'Cobranza / Cartera'};
   document.getElementById('page-title').textContent = titles[page];
   renderAll();
   if(typeof window!=='undefined' && window.innerWidth && window.innerWidth<900) toggleSidebar(false);
@@ -351,7 +397,149 @@ function renderAll(){
   renderGoals();
   fillEmpresaSelect();
   fillClienteSelects();
+  renderSalud();
+  renderCooperativa();
+  renderVoluntariado();
+  renderBuro();
+  renderPrecalificacion();
+  renderCobranza();
 }
+
+/* ============================= BURÓ DE CRÉDITO (demo simulado) ============================= */
+function riesgoColor(r){ return r==='Alto'?'pill-bad':r==='Medio'?'pill-warning':'pill-success'; }
+function renderBuro(){
+  const body = document.getElementById('buroTable');
+  if(!body) return;
+  const q = (document.getElementById('searchBuro')||{}).value || '';
+  const rows = state.clientes.filter(function(c){ return (c.contacto+c.empresa).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  body.innerHTML = rows.map(function(c){
+    const b = state.buro[c.id] || {estado:'Sin consultar'};
+    const accion = b.estado==='Consultado' ? '<button class="btn btn-ghost btn-small" onclick="verResumenBuro('+c.id+')">Ver resumen</button>' : (b.estado==='Consultando...' ? '<span class="text-muted">Consultando…</span>' : '<button class="btn btn-primary btn-small" onclick="consultarBuro('+c.id+')">Consultar buró</button>');
+    const riesgo = b.riesgo ? '<span class="pill '+riesgoColor(b.riesgo)+'">'+b.riesgo+'</span>' : '<span class="text-muted">—</span>';
+    return '<tr><td>'+esc(c.contacto)+'</td><td>'+esc(c.empresa)+'</td><td>'+(b.fecha||'—')+'</td><td>'+riesgo+'</td><td>'+pill(b.estado)+'</td><td>'+accion+'</td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
+}
+function consultarBuro(clienteId){
+  state.buro[clienteId] = {estado:'Consultando...'};
+  renderAll();
+  setTimeout(function(){
+    const seed = clienteId % 3;
+    const riesgo = seed===0?'Bajo':seed===1?'Medio':'Alto';
+    state.buro[clienteId] = {estado:'Consultado', riesgo:riesgo, fecha:todayISO(), obligaciones:'Resumen simulado de obligaciones vigentes ante el sistema financiero.', alertas: riesgo==='Alto' ? 'Se detectaron atrasos recientes.' : 'Sin hallazgos relevantes.'};
+    renderAll();
+    showToast('Consulta de buró (simulada) completada');
+  }, 900);
+}
+function verResumenBuro(clienteId){
+  const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
+  const b = state.buro[clienteId] || {};
+  showDetalle('Buró de crédito (simulado) — '+c.contacto, [['Fecha de consulta',b.fecha||'—'],['Nivel de riesgo',b.riesgo||'—'],['Obligaciones / resumen',b.obligaciones||'—'],['Alertas / hallazgos',b.alertas||'Sin hallazgos'],['Nota','Resultado simulado — sin integración real de buró en este demo.']]);
+}
+
+/* ============================= PRECALIFICACIÓN (demo simulado) ============================= */
+function renderPrecalificacion(){
+  const body = document.getElementById('precalificacionTable');
+  if(!body) return;
+  const q = (document.getElementById('searchPrecalificacion')||{}).value || '';
+  const rows = state.clientes.filter(function(c){ return (c.contacto+c.empresa).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  body.innerHTML = rows.map(function(c){
+    const p = state.precalificacion[c.id];
+    const accion = p ? '<button class="btn btn-ghost btn-small" onclick="verDetallePrecalificacion('+c.id+')">Ver detalle</button>' : '<button class="btn btn-primary btn-small" onclick="precalificar('+c.id+')">Precalificar</button>';
+    const resultado = p ? '<span class="pill '+(p.resultado==='Rechazar'?'pill-bad':p.resultado==='Aprobar'?'pill-success':'pill-warning')+'">'+p.resultado+'</span>' : '<span class="text-muted">Pendiente</span>';
+    return '<tr><td>'+esc(c.contacto)+'</td><td>'+formatMoney(c.valor)+'</td><td>'+(p?p.capacidad:'—')+'</td><td>'+resultado+'</td><td>'+(p?('<span class="pill '+riesgoColor(p.riesgo)+'">'+p.riesgo+'</span>'):'—')+'</td><td>'+accion+'</td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin solicitudes registradas</td></tr>';
+}
+function precalificar(clienteId){
+  const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
+  const b = state.buro[clienteId];
+  const riesgo = (b&&b.riesgo) || (c.probabilidad>=60?'Bajo':c.probabilidad>=35?'Medio':'Alto');
+  const resultado = riesgo==='Alto' ? 'Rechazar' : (riesgo==='Medio' ? 'Aprobar con condiciones' : 'Aprobar');
+  const capacidad = riesgo==='Alto'?'Baja':riesgo==='Medio'?'Media':'Alta';
+  state.precalificacion[clienteId] = {resultado:resultado, riesgo:riesgo, capacidad:capacidad, observaciones:'Resultado simulado a partir de datos de la solicitud y del buró (cuando disponible). No representa una fórmula financiera real.'};
+  renderAll();
+  showToast('Precalificación (simulada) generada para '+c.contacto);
+}
+function verDetallePrecalificacion(clienteId){
+  const c = state.clientes.find(function(x){ return x.id===clienteId; }); if(!c) return;
+  const p = state.precalificacion[clienteId]; if(!p) return;
+  showDetalle('Precalificación (simulada) — '+c.contacto, [['Monto solicitado',formatMoney(c.valor)],['Resultado',p.resultado],['Nivel de riesgo',p.riesgo],['Capacidad estimada',p.capacidad],['Observaciones',p.observaciones],['Siguiente paso', p.resultado==='Rechazar' ? 'Notificar al solicitante' : 'Enviar a gestión / aprobación']]);
+}
+
+/* ============================= COBRANZA / CARTERA (demo simulado) ============================= */
+function renderCobranza(){
+  const strip = document.getElementById('cobranzaKpis');
+  if(strip){
+    const total = state.cobranza.reduce(function(s,x){ return s+Number(x.saldo); },0);
+    const alDia = state.cobranza.filter(function(x){ return x.estado==='Al día'; }).length;
+    const proximos = state.cobranza.filter(function(x){ return x.estado==='Próximo a vencer'; }).length;
+    const vencidos = state.cobranza.filter(function(x){ return x.estado==='Vencido'||x.estado==='En mora'; }).length;
+    strip.innerHTML = '<div class="metric-cell"><span>Cartera total</span><strong>'+formatMoney(total)+'</strong></div><div class="metric-cell"><span>Créditos al día</span><strong>'+alDia+'</strong></div><div class="metric-cell"><span>Próximos vencimientos</span><strong>'+proximos+'</strong></div><div class="metric-cell"><span>Vencidos / en mora</span><strong>'+vencidos+'</strong></div>';
+  }
+  const body = document.getElementById('cobranzaTable');
+  if(!body) return;
+  const q = (document.getElementById('searchCobranza')||{}).value || '';
+  const rows = state.cobranza.filter(function(x){ return (x.solicitante+x.credito).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  const estadoPill = function(e){ return e==='Al día'?'pill-success':e==='Próximo a vencer'?'pill-warning':'pill-bad'; };
+  body.innerHTML = rows.map(function(x){
+    return '<tr><td>'+esc(x.solicitante)+'</td><td>'+esc(x.credito)+'</td><td>'+formatMoney(x.saldo)+'</td><td>'+x.proxVencimiento+'</td><td><span class="pill '+estadoPill(x.estado)+'">'+x.estado+'</span></td><td><button class="btn btn-ghost btn-small" onclick="verGestionCobranza('+x.id+')">Ver gestión</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin cuentas registradas</td></tr>';
+}
+function verGestionCobranza(id){
+  const x = state.cobranza.find(function(y){ return y.id===id; }); if(!x) return;
+  const hist = (x.historial||[]).map(function(h){ return h.fecha+' — '+h.texto; }).join('<br>') || 'Sin contactos registrados';
+  showDetalle('Cobranza — '+x.solicitante, [['Crédito',x.credito],['Saldo',formatMoney(x.saldo)],['Próximo vencimiento',x.proxVencimiento],['Estado',x.estado],['Historial de contacto',hist],['Promesa de pago',x.promesa||'Sin acuerdo registrado']]);
+}
+function registrarPromesaPago(){ showToast('Registro de promesas de pago disponible en la versión completa'); }
+
+/* ============================= SALUD / COOPERATIVA / VOLUNTARIADO (demo) ============================= */
+function showDetalle(titulo, filas){
+  const t = document.getElementById('detalleTitulo'); if(t) t.textContent = titulo;
+  const b = document.getElementById('detalleBody');
+  if(b) b.innerHTML = filas.map(function(f){ return '<div class="form-group"><label>'+esc(f[0])+'</label><div class="surface-2" style="padding:10px 12px">'+esc(f[1])+'</div></div>'; }).join('');
+  openModal('modal-detalle');
+}
+function renderSalud(){
+  const body = document.getElementById('saludTable');
+  if(!body) return;
+  const q = (document.getElementById('searchSalud')||{}).value || '';
+  const rows = state.salud.filter(function(s){ return (s.afiliado+s.servicio).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  body.innerHTML = rows.map(function(s){
+    return '<tr><td>'+esc(s.afiliado)+'</td><td>'+esc(s.servicio)+'</td><td>'+esc(s.fecha)+' · '+esc(s.hora)+'</td><td>'+esc(s.lugar)+'</td><td>'+pill(s.estado)+'</td><td><button class="btn btn-ghost btn-small" onclick="verDetalleSalud('+s.id+')">Ver detalle</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin citas registradas</td></tr>';
+}
+function verDetalleSalud(id){
+  const s = state.salud.find(function(x){ return x.id===id; }); if(!s) return;
+  showDetalle('Cita de salud — '+s.afiliado, [['Servicio',s.servicio],['Fecha',s.fecha],['Hora',s.hora],['Lugar',s.lugar],['Estado',s.estado]]);
+}
+function nuevaCitaSalud(){ showToast('Registro de citas disponible en la versión completa'); }
+function renderCooperativa(){
+  const body = document.getElementById('cooperativaTable');
+  if(!body) return;
+  const q = (document.getElementById('searchCooperativa')||{}).value || '';
+  const rows = state.cooperativa.filter(function(c){ return (c.afiliado+c.tipoAporte).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  body.innerHTML = rows.map(function(c){
+    return '<tr><td>'+esc(c.afiliado)+'</td><td>'+esc(c.tipoAporte)+'</td><td>RD$'+Number(c.monto).toLocaleString('es-DO')+'</td><td>'+esc(c.fecha)+'</td><td>'+pill(c.estado)+'</td><td><button class="btn btn-ghost btn-small" onclick="verDetalleCooperativa('+c.id+')">Ver detalle</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin movimientos registrados</td></tr>';
+}
+function verDetalleCooperativa(id){
+  const c = state.cooperativa.find(function(x){ return x.id===id; }); if(!c) return;
+  showDetalle('Movimiento cooperativa — '+c.afiliado, [['Tipo de aporte',c.tipoAporte],['Monto','RD$'+Number(c.monto).toLocaleString('es-DO')],['Fecha',c.fecha],['Estado',c.estado]]);
+}
+function nuevoMovimientoCooperativa(){ showToast('Registro de aportes disponible en la versión completa'); }
+function renderVoluntariado(){
+  const body = document.getElementById('voluntariadoTable');
+  if(!body) return;
+  const q = (document.getElementById('searchVoluntariado')||{}).value || '';
+  const rows = state.voluntariado.filter(function(v){ return (v.nombre+v.area).toLowerCase().indexOf(q.toLowerCase())>-1; });
+  body.innerHTML = rows.map(function(v){
+    return '<tr><td>'+esc(v.nombre)+'</td><td>'+esc(v.area)+'</td><td>'+v.horas+' h</td><td>'+esc(v.proxima)+'</td><td>'+pill(v.estado)+'</td><td><button class="btn btn-ghost btn-small" onclick="verDetalleVoluntariado('+v.id+')">Ver detalle</button></td></tr>';
+  }).join('') || '<tr><td colspan="6" class="empty-state">Sin voluntarios registrados</td></tr>';
+}
+function verDetalleVoluntariado(id){
+  const v = state.voluntariado.find(function(x){ return x.id===id; }); if(!v) return;
+  showDetalle('Voluntario — '+v.nombre, [['Área',v.area],['Horas acumuladas',v.horas+' h'],['Próxima actividad',v.proxima],['Estado',v.estado]]);
+}
+function nuevoVoluntario(){ showToast('Registro de voluntarios disponible en la versión completa'); }
 
 /* ============================= REPORTES ============================= */
 function renderReportes(){
@@ -386,7 +574,7 @@ function renderReportes(){
     return '<tr class="no-click"><td style="font-weight:700">'+c+'</td><td>'+porCanal[c]+'</td><td>'+Math.round(porCanal[c]/totalC*100)+'%</td></tr>';
   }).join('');
   const advisorBars=document.getElementById('reportAdvisorBars');
-  if(advisorBars) advisorBars.innerHTML=[['Katherine Silva',92,'#2f6fed'],['Sarah Chen',71,'#7c3aed'],['Carlos Méndez',56,'#17a673']].map(function(a){return '<div style="display:grid;grid-template-columns:115px 1fr 38px;gap:10px;align-items:center;margin:16px 0"><strong style="font-size:11.5px">'+a[0]+'</strong><div class="progress-track"><div class="progress-fill" style="width:'+a[1]+'%;background:'+a[2]+'"></div></div><strong>'+a[1]+'%</strong></div>';}).join('');
+  if(advisorBars) advisorBars.innerHTML=[['Katherine Silva',92,'#2f6fed'],['Sarah Chen',71,'#d92440'],['Carlos Méndez',56,'#17a673']].map(function(a){return '<div style="display:grid;grid-template-columns:115px 1fr 38px;gap:10px;align-items:center;margin:16px 0"><strong style="font-size:11.5px">'+a[0]+'</strong><div class="progress-track"><div class="progress-fill" style="width:'+a[1]+'%;background:'+a[2]+'"></div></div><strong>'+a[1]+'%</strong></div>';}).join('');
   const stageValues=ETAPAS.map(function(et){return state.clientes.filter(function(c){return c.etapa===et;}).reduce(function(s,c){return s+Number(c.valor);},0);});
   const stageMax=Math.max.apply(null,stageValues)||1;
   const stageBars=document.getElementById('reportStageBars');
@@ -399,12 +587,12 @@ function renderReportes(){
 function excelTable(title,headers,rows){return '<h2>'+title+'</h2><table border="1"><thead><tr>'+headers.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(v){return '<td>'+esc(v)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table>';}
 function downloadExcel(filename,content){const html='<html><head><meta charset="UTF-8"></head><body>'+content+'</body></html>';const blob=new Blob(['\ufeff'+html],{type:'application/vnd.ms-excel;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;a.click();URL.revokeObjectURL(url);showToast('Informe preparado para Excel');}
 function reportData(type){
-  if(type==='asesores') return {title:'Rendimiento por asesor',headers:['Asesor','Gestiones','Cerradas','Cumplimiento'],rows:[['Katherine Silva',8,3,'92%'],['Sarah Chen',6,2,'71%'],['Carlos Méndez',5,1,'56%']]};
-  if(type==='proceso') return {title:'Proceso comercial',headers:['Etapa','Oportunidades','Valor total'],rows:ETAPAS.map(function(et){const items=state.clientes.filter(function(c){return c.etapa===et;});return [et,items.length,items.reduce(function(s,c){return s+Number(c.valor);},0)];})};
-  const counts={};state.clientes.forEach(function(c){counts[c.canal]=(counts[c.canal]||0)+1;});return {title:'Canales de origen',headers:['Canal','Contactos','Participación'],rows:Object.keys(counts).map(function(c){return [c,counts[c],Math.round(counts[c]/state.clientes.length*100)+'%'];})};
+  if(type==='asesores') return {title:'Productividad por gestor',headers:['Gestor','Gestiones','Cerradas','Cumplimiento'],rows:[['Katherine Silva',8,3,'92%'],['Sarah Chen',6,2,'71%'],['Carlos Méndez',5,1,'56%']]};
+  if(type==='proceso') return {title:'Solicitudes por etapa del proceso',headers:['Etapa','Solicitudes','Monto total'],rows:ETAPAS.map(function(et){const items=state.clientes.filter(function(c){return c.etapa===et;});return [et,items.length,items.reduce(function(s,c){return s+Number(c.valor);},0)];})};
+  const counts={};state.clientes.forEach(function(c){counts[c.canal]=(counts[c.canal]||0)+1;});return {title:'Canales de ingreso de solicitudes',headers:['Canal','Solicitudes','Participación'],rows:Object.keys(counts).map(function(c){return [c,counts[c],Math.round(counts[c]/state.clientes.length*100)+'%'];})};
 }
 function exportReportExcel(type){const d=reportData(type);downloadExcel('AVA_CRM_'+type+'.xls',excelTable(d.title,d.headers,d.rows));}
-function exportAllReportsExcel(){const types=['asesores','proceso','canales'];let content='<h1>AVA CRM Comercial - Informe estratégico</h1><p>Periodo: '+document.getElementById('reportPeriod').value+'</p>';types.forEach(function(t){const d=reportData(t);content+=excelTable(d.title,d.headers,d.rows);});downloadExcel('AVA_CRM_Informe_Estrategico.xls',content);}
+function exportAllReportsExcel(){const types=['asesores','proceso','canales'];let content='<h1>AVA CRM · Veteranos RD - Informe estratégico</h1><p>Periodo: '+document.getElementById('reportPeriod').value+'</p>';types.forEach(function(t){const d=reportData(t);content+=excelTable(d.title,d.headers,d.rows);});downloadExcel('AVA_CRM_Informe_Estrategico.xls',content);}
 function exportReporteAsesores(){
   const porAsesor = {};
   state.gestiones.forEach(function(g){
@@ -442,29 +630,29 @@ function pill(estado){
 
 /* ============================= ANALÍTICA EJECUTIVA ============================= */
 function renderKpis(){
-  const activos = state.clientes.filter(function(c){ return c.estado==='Activo'; }).length;
-  const pipelineAbierto = state.clientes.filter(function(c){ return c.etapa!=='Cerrado'; }).reduce(function(s,c){ return s+Number(c.valor); },0);
+  const aprobados = state.clientes.filter(function(c){ return c.etapa==='Aprobada'; }).length;
+  const enProceso = state.clientes.filter(function(c){ return c.etapa!=='Aprobada'; }).length;
+  const carteraActiva = state.clientes.filter(function(c){ return c.etapa==='Aprobada'; }).reduce(function(s,c){ return s+Number(c.valor); },0);
   const total = state.clientes.length;
-  const cerrados = state.clientes.filter(function(c){ return c.etapa==='Cerrado'; }).length;
   const scorePromedio = total ? Math.round(state.clientes.reduce(function(s,c){ return s+getAVAScore(c).score; },0)/total) : 0;
   const pendientes = state.tasks.filter(function(t){ return t.estado!=='Completada'; }).length;
-  const abiertas = state.quotes.filter(function(q){ return q.estado==='Borrador'||q.estado==='Enviada'; }).length;
+  const enMora = state.cobranza ? state.cobranza.filter(function(x){ return x.estado==='Vencido'||x.estado==='En mora'; }).length : 0;
   const objetivo = 360000000;
-  const ventas = 273600000;
-  const pronostico = state.clientes.filter(function(c){ return c.etapa!=='Cerrado'; }).reduce(function(s,c){ return s+(c.valor*c.probabilidad/100); },0);
+  const colocado = carteraActiva;
+  const pronostico = state.clientes.filter(function(c){ return c.etapa!=='Aprobada'; }).reduce(function(s,c){ return s+(c.valor*c.probabilidad/100); },0);
   document.getElementById('kpiGrid').innerHTML =
-    '<div class="kpi-card" style="--kpi-accent:#17a673"><div class="kpi-label">Ventas del mes</div><div class="kpi-value">'+formatMoney(ventas)+'</div><div class="kpi-trend">76% de la meta mensual</div></div>'+
-    '<div class="kpi-card" style="--kpi-accent:#2f6fed"><div class="kpi-label">Oportunidades activas</div><div class="kpi-value">'+(total-cerrados)+'</div><div class="kpi-trend">'+activos+' contactos activos</div></div>'+
-    '<div class="kpi-card" style="--kpi-accent:#7c3aed"><div class="kpi-label">Puntuación promedio AVA</div><div class="kpi-value">'+scorePromedio+'/100</div><div class="kpi-trend">Calificación inteligente</div></div>'+
-    '<div class="kpi-card" style="--kpi-accent:#e0a324"><div class="kpi-label">Tareas pendientes</div><div class="kpi-value">'+pendientes+'</div><div class="kpi-trend">3 requieren atención hoy</div></div>'+
-    '<div class="kpi-card" style="--kpi-accent:#e5484d"><div class="kpi-label">Sin seguimiento</div><div class="kpi-value">3</div><div class="kpi-trend" style="color:var(--warn)">Revisión recomendada</div></div>'+
-    '<div class="kpi-card" style="--kpi-accent:#4f8bff"><div class="kpi-label">Cotizaciones abiertas</div><div class="kpi-value">'+abiertas+'</div><div class="kpi-trend">Borradores y enviadas</div></div>';
-  const ids = {dashSales:ventas,dashGoal:objetivo,dashForecast:pronostico};
+    '<div class="kpi-card" style="--kpi-accent:#17a673"><div class="kpi-label">Cartera activa</div><div class="kpi-value">'+formatMoney(carteraActiva)+'</div><div class="kpi-trend">'+aprobados+' créditos aprobados</div></div>'+
+    '<div class="kpi-card" style="--kpi-accent:#2f6fed"><div class="kpi-label">Solicitudes en proceso</div><div class="kpi-value">'+enProceso+'</div><div class="kpi-trend">'+total+' solicitudes totales</div></div>'+
+    '<div class="kpi-card" style="--kpi-accent:linear-gradient(90deg,#2f6fed,#d92440)"><div class="kpi-label">Puntuación promedio AVA</div><div class="kpi-value">'+scorePromedio+'/100</div><div class="kpi-trend">Precalificación automatizada</div></div>'+
+    '<div class="kpi-card" style="--kpi-accent:#e0a324"><div class="kpi-label">Gestiones pendientes</div><div class="kpi-value">'+pendientes+'</div><div class="kpi-trend">Seguimientos de hoy</div></div>'+
+    '<div class="kpi-card" style="--kpi-accent:#d92440"><div class="kpi-label">Créditos en mora</div><div class="kpi-value">'+enMora+'</div><div class="kpi-trend" style="color:var(--warn)">Cobranza requiere atención</div></div>'+
+    '<div class="kpi-card" style="--kpi-accent:#4f8bff"><div class="kpi-label">Colocación del mes</div><div class="kpi-value">'+formatMoney(colocado)+'</div><div class="kpi-trend">Meta: '+formatMoney(objetivo)+'</div></div>';
+  const ids = {dashSales:colocado,dashGoal:objetivo,dashForecast:pronostico};
   Object.keys(ids).forEach(function(id){ const el=document.getElementById(id); if(el) el.textContent=formatMoney(ids[id]); });
 }
 function renderDashboardStrategies(){
   const el=document.getElementById('dashboardStrategies'); if(!el) return;
-  el.innerHTML='<div class="strategic-item"><div class="strategic-icon">1</div><div><strong>Prioriza tres propuestas abiertas</strong><span>Concentran el 62% del valor con probabilidad alta de cierre.</span></div></div><div class="strategic-item"><div class="strategic-icon">2</div><div><strong>Responde WhatsApp antes de 20 minutos</strong><span>Es el canal con mejor velocidad de avance comercial.</span></div></div><div class="strategic-item"><div class="strategic-icon">3</div><div><strong>Agenda dos reuniones hoy</strong><span>Las oportunidades con reunión convierten 1,8 veces más.</span></div></div>';
+  el.innerHTML='<div class="strategic-item"><div class="strategic-icon">1</div><div><strong>Prioriza tres solicitudes precalificadas</strong><span>Concentran el 62% del monto con alta probabilidad de aprobación.</span></div></div><div class="strategic-item"><div class="strategic-icon">2</div><div><strong>Consulta buró antes de 20 minutos</strong><span>Acelera el paso a precalificación en solicitudes nuevas.</span></div></div><div class="strategic-item"><div class="strategic-icon">3</div><div><strong>Da seguimiento a dos cuentas en mora hoy</strong><span>Las promesas de pago contactadas a tiempo se cumplen 1,8 veces más.</span></div></div>';
 }
 function renderChartLeadsDia(){
   const dias = ['L','M','X','J','V','S','H'];
@@ -504,16 +692,16 @@ function renderChartCanales(){
 }
 function renderChartFunnel(){
   const total = state.clientes.length;
-  const contactados = state.clientes.filter(function(c){ return c.etapa!=='Prospecto'; }).length;
-  const negociacion = state.clientes.filter(function(c){ return ['Negociación','Propuesta','Cerrado'].indexOf(c.etapa)>=0; }).length;
-  const propuesta = state.clientes.filter(function(c){ return ['Propuesta','Cerrado'].indexOf(c.etapa)>=0; }).length;
-  const cerrados = state.clientes.filter(function(c){ return c.etapa==='Cerrado'; }).length;
+  const enRevision = state.clientes.filter(function(c){ return c.etapa!=='Nueva solicitud'; }).length;
+  const buro = state.clientes.filter(function(c){ return ['Buró consultado','Precalificada','Aprobada'].indexOf(c.etapa)>=0; }).length;
+  const precalificada = state.clientes.filter(function(c){ return ['Precalificada','Aprobada'].indexOf(c.etapa)>=0; }).length;
+  const aprobadas = state.clientes.filter(function(c){ return c.etapa==='Aprobada'; }).length;
   const rows = [
-    {label:'Potenciales', val:total, color:'#2f6fed'},
-    {label:'Contactados', val:contactados, color:'#4f8bff'},
-    {label:'Calificados', val:negociacion, color:'#7fb0ff'},
-    {label:'Propuesta', val:propuesta, color:'#7c3aed'},
-    {label:'Cerrados', val:cerrados, color:'#17a673'}
+    {label:'Solicitudes', val:total, color:'#2f6fed'},
+    {label:'En revisión', val:enRevision, color:'#4f8bff'},
+    {label:'Buró consultado', val:buro, color:'#7fb0ff'},
+    {label:'Precalificada', val:precalificada, color:'#e0a324'},
+    {label:'Aprobadas', val:aprobadas, color:'#17a673'}
   ];
   const max = total || 1;
   document.getElementById('chartFunnel').innerHTML = rows.map(function(r){
@@ -537,16 +725,16 @@ function renderInsights(){
 
 /* ============================= IA COMERCIAL Y NUEVOS MÓDULOS ============================= */
 function getAVAScore(c){
-  const stagePoints = {Prospecto:12,Contactado:28,'Negociación':48,Propuesta:65,Cerrado:82};
+  const stagePoints = {'Nueva solicitud':12,'En revisión':28,'Buró consultado':48,Precalificada:65,Aprobada:82};
   const activity = (c.actividad||[]).length;
   let score = Math.min(98, (stagePoints[c.etapa]||10) + Math.round(c.probabilidad*.12) + activity*4 + (c.canal==='WhatsApp'?7:3));
-  if(c.etapa==='Cerrado') score = 96;
+  if(c.etapa==='Aprobada') score = 96;
   const level = score>=75?'Alto':score>=45?'Medio':'Bajo';
   const factors = [];
   if(c.canal==='WhatsApp') factors.push('Respondió por WhatsApp');
   if(c.canal==='Email') factors.push('Abrió correos recientes');
-  if(['Negociación','Propuesta','Cerrado'].indexOf(c.etapa)>=0) factors.push('Avanzó dentro del proceso comercial');
-  if(c.etapa==='Propuesta'||c.etapa==='Cerrado') factors.push('Solicitó o recibió cotización');
+  if(['Buró consultado','Precalificada','Aprobada'].indexOf(c.etapa)>=0) factors.push('Avanzó dentro del proceso de crédito');
+  if(c.etapa==='Precalificada'||c.etapa==='Aprobada') factors.push('Cuenta con precalificación registrada');
   if(activity) factors.push('Interactuó recientemente');
   if(c.probabilidad>=60) factors.push('Tiene señales claras de intención');
   if(factors.length<3) factors.push('Próxima tarea pendiente de confirmar');
@@ -559,7 +747,7 @@ function renderInbox(){
   const q=(document.getElementById('inboxSearch').value||'').toLowerCase();
   const channel=document.getElementById('inboxChannel').value;
   const filtered=state.conversations.filter(function(c){return (!channel||c.canal===channel)&&(!q||(c.nombre+' '+c.empresa+' '+c.canal).toLowerCase().indexOf(q)>=0);});
-  list.innerHTML=filtered.map(function(c){const last=c.messages[c.messages.length-1];return '<button class="conversation-item '+(c.id===selectedConversationId?'active':'')+'" onclick="selectConversation('+c.id+')"><div class="conversation-top"><span class="conversation-name">'+esc(c.nombre)+(c.unread?' <span style="color:var(--blue-500)">&#9679;</span>':'')+'</span><small class="text-muted">'+esc(last.time)+'</small></div><div style="font-size:11px;margin-top:3px"><span class="channel-dot" style="background:'+(CANAL_COLOR[c.canal]||'#7c3aed')+'"></span>'+esc(c.canal)+' &middot; '+esc(c.empresa)+'</div><div class="conversation-preview">'+esc(last.text)+'</div></button>';}).join('')||'<div class="empty-state">No hay conversaciones con estos filtros.</div>';
+  list.innerHTML=filtered.map(function(c){const last=c.messages[c.messages.length-1];return '<button class="conversation-item '+(c.id===selectedConversationId?'active':'')+'" onclick="selectConversation('+c.id+')"><div class="conversation-top"><span class="conversation-name">'+esc(c.nombre)+(c.unread?' <span style="color:var(--blue-500)">&#9679;</span>':'')+'</span><small class="text-muted">'+esc(last.time)+'</small></div><div style="font-size:11px;margin-top:3px"><span class="channel-dot" style="background:'+(CANAL_COLOR[c.canal]||'#d92440')+'"></span>'+esc(c.canal)+' &middot; '+esc(c.empresa)+'</div><div class="conversation-preview">'+esc(last.text)+'</div></button>';}).join('')||'<div class="empty-state">No hay conversaciones con estos filtros.</div>';
   renderConversation();
 }
 function selectConversation(id){selectedConversationId=id;const c=state.conversations.find(function(x){return x.id===id;});if(c)c.unread=false;document.getElementById('replyText').value='';renderInbox();}
@@ -570,19 +758,19 @@ function renderConversation(){
   document.getElementById('chatChannel').textContent=c.canal;
   document.getElementById('chatMessages').innerHTML=c.messages.map(function(m){return '<div class="message '+m.dir+'">'+esc(m.text)+'<small>'+esc(m.time)+'</small></div>';}).join('');
   const client=state.clientes.find(function(x){return x.id===c.clienteId;}); const score=client?getAVAScore(client):{score:71,level:'Medio',factors:[]};
-  document.getElementById('conversationContext').innerHTML='<div class="score-card"><div class="score-ring" style="--score:'+score.score+';--score-color:'+scoreColor(score.level)+'"><strong>'+score.score+'</strong></div><div><div class="score-level" style="color:'+scoreColor(score.level)+'">Nivel '+score.level+'</div><div style="font-weight:800">Puntuación AVA</div><div class="text-muted" style="font-size:11px">'+(client?client.probabilidad:62)+'% probabilidad de cierre</div></div></div><div class="context-row"><div class="context-label">Cliente</div><div class="context-value">'+esc(c.nombre)+'</div></div><div class="context-row"><div class="context-label">Empresa</div><div class="context-value">'+esc(c.empresa)+'</div></div><div class="context-row"><div class="context-label">Etapa comercial</div><div class="context-value">'+esc(c.etapa)+'</div></div><div class="context-row"><div class="context-label">Producto de interés</div><div class="context-value">'+esc(c.producto)+'</div></div><div class="context-row"><div class="context-label">Próxima tarea</div><div class="context-value">'+esc(c.proxima)+'</div></div><div class="context-row"><div class="context-label">Historial</div><div class="context-value">'+c.messages.length+' mensajes registrados</div></div>';
+  document.getElementById('conversationContext').innerHTML='<div class="score-card"><div class="score-ring" style="--score:'+score.score+';--score-color:'+scoreColor(score.level)+'"><strong>'+score.score+'</strong></div><div><div class="score-level" style="color:'+scoreColor(score.level)+'">Nivel '+score.level+'</div><div style="font-weight:800">Puntuación AVA</div><div class="text-muted" style="font-size:11px">'+(client?client.probabilidad:62)+'% probabilidad de aprobación</div></div></div><div class="context-row"><div class="context-label">Solicitante</div><div class="context-value">'+esc(c.nombre)+'</div></div><div class="context-row"><div class="context-label">Institución / cuerpo</div><div class="context-value">'+esc(c.empresa)+'</div></div><div class="context-row"><div class="context-label">Etapa del proceso</div><div class="context-value">'+esc(c.etapa)+'</div></div><div class="context-row"><div class="context-label">Tipo de crédito</div><div class="context-value">'+esc(c.producto)+'</div></div><div class="context-row"><div class="context-label">Próxima acción</div><div class="context-value">'+esc(c.proxima)+'</div></div><div class="context-row"><div class="context-label">Historial</div><div class="context-value">'+c.messages.length+' mensajes registrados</div></div>';
   const box=document.getElementById('chatMessages'); box.scrollTop=box.scrollHeight;
 }
 function generateAVAReply(){const c=state.conversations.find(function(x){return x.id===selectedConversationId;});if(!c){showToast('Selecciona una conversación');return;}document.getElementById('replyText').value='Hola '+c.nombre.split(' ')[0]+', claro. Teniendo en cuenta lo conversado sobre '+c.producto+', te comparto la información actualizada. También puedo acompañarte en el siguiente paso de la etapa de '+c.etapa.toLowerCase()+'. ¿Te parece bien si lo revisamos hoy?';showToast('AVA generó una sugerencia editable');}
 function sendConversationReply(){const c=state.conversations.find(function(x){return x.id===selectedConversationId;});const input=document.getElementById('replyText');if(!c||!input.value.trim()){showToast('Escribe o genera una respuesta antes de enviar');return;}c.messages.push({dir:'outgoing',text:input.value.trim(),time:nowLabel()});input.value='';renderInbox();showToast('Respuesta enviada en la simulación');}
 function markConversationRead(){const c=state.conversations.find(function(x){return x.id===selectedConversationId;});if(c)c.unread=false;renderInbox();showToast('Conversación marcada como atendida');}
 
-function renderFollowupAlerts(){const el=document.getElementById('followupAlerts');if(!el)return;const alerts=[{id:3,text:'Cliente sin respuesta desde hace 5 días.',type:'Llamada',high:true},{id:4,text:'Esta oportunidad está perdiendo actividad.',type:'WhatsApp',high:false},{id:5,text:'Se recomienda realizar seguimiento hoy.',type:'Correo',high:false}];el.innerHTML=alerts.map(function(a){return '<div class="alert-commercial '+(a.high?'high':'')+'"><div><strong>'+a.text+'</strong><div class="text-muted" style="font-size:11.5px">AVA sugiere: '+a.type+'</div></div><button class="btn btn-violet btn-small" onclick="generateFollowup('+a.id+',\''+a.type+'\')">Generar seguimiento con AVA</button></div>';}).join('');}
-function generateFollowup(clientId,type){const c=state.clientes.find(function(x){return x.id===clientId;})||state.clientes[0];const task={id:uid(),tipo:type==='Llamada'?'Llamar cliente':'Realizar seguimiento',cliente:c.contacto,empresa:c.empresa,responsable:'Katherine Silva',fecha:todayISO(),hora:'15:00',prioridad:'Alta',estado:'Pendiente'};state.tasks.unshift(task);renderTasks();showToast('AVA creó una tarea de '+type+' para '+c.contacto);}
+function renderFollowupAlerts(){const el=document.getElementById('followupAlerts');if(!el)return;const alerts=[{id:3,text:'Solicitante sin respuesta desde hace 5 días.',type:'Llamada',high:true},{id:4,text:'Esta solicitud está perdiendo actividad.',type:'WhatsApp',high:false},{id:5,text:'Se recomienda dar seguimiento hoy.',type:'Correo',high:false}];el.innerHTML=alerts.map(function(a){return '<div class="alert-commercial '+(a.high?'high':'')+'"><div><strong>'+a.text+'</strong><div class="text-muted" style="font-size:11.5px">AVA sugiere: '+a.type+'</div></div><button class="btn btn-violet btn-small" onclick="generateFollowup('+a.id+',\''+a.type+'\')">Generar seguimiento con AVA</button></div>';}).join('');}
+function generateFollowup(clientId,type){const c=state.clientes.find(function(x){return x.id===clientId;})||state.clientes[0];const task={id:uid(),tipo:type==='Llamada'?'Llamar solicitante':'Realizar seguimiento',cliente:c.contacto,empresa:c.empresa,responsable:'Katherine Silva',fecha:todayISO(),hora:'15:00',prioridad:'Alta',estado:'Pendiente'};state.tasks.unshift(task);renderTasks();showToast('AVA creó una tarea de '+type+' para '+c.contacto);}
 function renderTasks(){const body=document.getElementById('tasksTable');if(!body)return;const q=(document.getElementById('taskSearch').value||'').toLowerCase();const filter=document.getElementById('taskFilter').value;const rows=state.tasks.filter(function(t){return (!filter||t.estado===filter)&&(!q||(t.tipo+' '+t.cliente+' '+t.empresa+' '+t.responsable).toLowerCase().indexOf(q)>=0);});body.innerHTML=rows.map(function(t){const pc=t.prioridad==='Alta'?'pill-bad':t.prioridad==='Media'?'pill-warning':'pill-info';const sc=t.estado==='Completada'?'pill-success':t.estado==='En progreso'?'pill-info':'pill-warning';return '<tr class="no-click"><td data-label="Tarea" style="font-weight:700">'+esc(t.tipo)+'</td><td data-label="Cliente">'+esc(t.cliente)+'</td><td data-label="Empresa">'+esc(t.empresa)+'</td><td data-label="Responsable">'+esc(t.responsable)+'</td><td data-label="Fecha y hora">'+esc(t.fecha)+' · '+esc(t.hora)+'</td><td data-label="Prioridad"><span class="pill '+pc+'">'+t.prioridad+'</span></td><td data-label="Estado"><span class="pill '+sc+'">'+t.estado+'</span></td><td data-label="Acción"><button class="btn btn-ghost btn-small" onclick="advanceTask('+t.id+')">Actualizar</button></td></tr>';}).join('')||'<tr><td colspan="8" class="empty-state">No hay tareas con estos filtros.</td></tr>';}
 function advanceTask(id){const t=state.tasks.find(function(x){return x.id===id;});if(!t)return;t.estado=t.estado==='Pendiente'?'En progreso':t.estado==='En progreso'?'Completada':'Pendiente';renderAll();showToast('Tarea actualizada a '+t.estado);}
 function openTaskModal(){document.getElementById('task-date').value=todayISO();document.getElementById('task-time').value='09:00';openModal('modal-task');}
-function submitTask(e){e.preventDefault();state.tasks.unshift({id:uid(),tipo:document.getElementById('task-type').value,cliente:document.getElementById('task-client').value,empresa:document.getElementById('task-company').value,responsable:document.getElementById('task-owner').value,fecha:document.getElementById('task-date').value,hora:document.getElementById('task-time').value,prioridad:document.getElementById('task-priority').value,estado:'Pendiente'});e.target.reset();closeModal('modal-task');renderAll();showToast('Tarea comercial creada');}
+function submitTask(e){e.preventDefault();state.tasks.unshift({id:uid(),tipo:document.getElementById('task-type').value,cliente:document.getElementById('task-client').value,empresa:document.getElementById('task-company').value,responsable:document.getElementById('task-owner').value,fecha:document.getElementById('task-date').value,hora:document.getElementById('task-time').value,prioridad:document.getElementById('task-priority').value,estado:'Pendiente'});e.target.reset();closeModal('modal-task');renderAll();showToast('Tarea creada');}
 
 function renderProducts(){const body=document.getElementById('productsTable');if(!body)return;updateTaxUI();const q=(document.getElementById('productSearch').value||'').toLowerCase();const f=document.getElementById('productFilter').value;const rows=state.products.filter(function(p){return (!f||p.estado===f)&&(!q||(p.nombre+' '+p.descripcion).toLowerCase().indexOf(q)>=0);});body.innerHTML=rows.map(function(p){return '<tr class="no-click"><td style="font-weight:800">'+esc(p.nombre)+'</td><td>'+esc(p.descripcion)+'</td><td>'+formatMoney(p.precio)+'</td><td>'+p.impuesto+'%</td><td>'+p.comision+'%</td><td>'+pill(p.estado)+'</td><td><button class="btn btn-ghost btn-small" onclick="associateProduct('+p.id+')">Asociar</button></td></tr>';}).join('');fillQuoteProducts();}
 function openProductModal(){updateTaxUI();document.getElementById('product-tax').value=activeTax().taxRate;openModal('modal-product');}
@@ -592,12 +780,12 @@ function fillQuoteProducts(){const sel=document.getElementById('quote-product');
 function fillQuotePrice(){const p=state.products.find(function(x){return x.id===Number(document.getElementById('quote-product').value);});if(!p)return;document.getElementById('quote-price').value=p.precio;document.getElementById('quote-tax').value=activeTax().taxRate;updateQuotePreview();}
 function quoteTotals(){const qty=Number(document.getElementById('quote-qty').value)||0;const price=Number(document.getElementById('quote-price').value)||0;const discount=Number(document.getElementById('quote-discount').value)||0;const tax=Number(document.getElementById('quote-tax').value)||0;const subtotal=qty*price*(1-discount/100);return {subtotal:subtotal,total:subtotal*(1+tax/100)};}
 function updateQuotePreview(){const t=quoteTotals();document.getElementById('quote-subtotal').textContent=formatMoney(t.subtotal);document.getElementById('quote-total').textContent=formatMoney(t.total);}
-function openQuoteModal(id){fillQuoteProducts();updateTaxUI();document.getElementById('quote-date').value=todayISO();const q=state.quotes.find(function(x){return x.id===id;});document.getElementById('quote-id').value=q?q.id:'';document.getElementById('quoteModalTitle').textContent=q?'Editar cotización':'Nueva cotización';if(q){document.getElementById('quote-client').value=q.cliente;document.getElementById('quote-company').value=q.empresa;const p=state.products.find(function(x){return x.nombre===q.producto;});if(p)document.getElementById('quote-product').value=p.id;document.getElementById('quote-qty').value=q.cantidad;document.getElementById('quote-price').value=q.precio;document.getElementById('quote-discount').value=q.descuento;document.getElementById('quote-tax').value=activeTax().taxRate;document.getElementById('quote-date').value=q.fecha;}else{document.getElementById('quote-qty').value=1;document.getElementById('quote-discount').value=0;fillQuotePrice();}updateQuotePreview();openModal('modal-quote');}
+function openQuoteModal(id){fillQuoteProducts();updateTaxUI();document.getElementById('quote-date').value=todayISO();const q=state.quotes.find(function(x){return x.id===id;});document.getElementById('quote-id').value=q?q.id:'';document.getElementById('quoteModalTitle').textContent=q?'Editar crédito':'Nuevo crédito';if(q){document.getElementById('quote-client').value=q.cliente;document.getElementById('quote-company').value=q.empresa;const p=state.products.find(function(x){return x.nombre===q.producto;});if(p)document.getElementById('quote-product').value=p.id;document.getElementById('quote-qty').value=q.cantidad;document.getElementById('quote-price').value=q.precio;document.getElementById('quote-discount').value=q.descuento;document.getElementById('quote-tax').value=activeTax().taxRate;document.getElementById('quote-date').value=q.fecha;}else{document.getElementById('quote-qty').value=1;document.getElementById('quote-discount').value=0;fillQuotePrice();}updateQuotePreview();openModal('modal-quote');}
 function submitQuote(e){e.preventDefault();const id=Number(document.getElementById('quote-id').value);const p=state.products.find(function(x){return x.id===Number(document.getElementById('quote-product').value);});const t=quoteTotals();const data={cliente:document.getElementById('quote-client').value,empresa:document.getElementById('quote-company').value,producto:p.nombre,cantidad:Number(document.getElementById('quote-qty').value),precio:Number(document.getElementById('quote-price').value),descuento:Number(document.getElementById('quote-discount').value),impuesto:Number(document.getElementById('quote-tax').value),subtotal:t.subtotal,total:t.total,fecha:document.getElementById('quote-date').value};if(id){Object.assign(state.quotes.find(function(x){return x.id===id;}),data);}else{data.id=uid();data.numero='COT-2026-'+String(state.quotes.length+15).padStart(3,'0');data.estado='Borrador';state.quotes.unshift(data);}closeModal('modal-quote');renderAll();showToast(id?'Cotización actualizada':'Cotización creada');}
-function renderQuotes(){const body=document.getElementById('quotesTable');if(!body)return;const q=(document.getElementById('quoteSearch').value||'').toLowerCase();const f=document.getElementById('quoteFilter').value;const rows=state.quotes.filter(function(x){return (!f||x.estado===f)&&(!q||(x.numero+' '+x.cliente+' '+x.empresa).toLowerCase().indexOf(q)>=0);});body.innerHTML=rows.map(function(x){const cls=x.estado==='Aceptada'?'pill-success':x.estado==='Rechazada'?'pill-bad':x.estado==='Enviada'?'pill-info':'pill-warning';return '<tr class="no-click"><td><button class="btn btn-ghost btn-small" onclick="showQuote('+x.id+')">'+x.numero+'</button></td><td><strong>'+esc(x.cliente)+'</strong><div class="text-muted" style="font-size:11px">'+esc(x.empresa)+'</div></td><td>'+esc(x.producto)+'</td><td>'+esc(x.fecha)+'</td><td style="font-weight:800">'+formatMoney(x.total)+'</td><td><span class="pill '+cls+'">'+x.estado+'</span></td><td><div class="quote-actions"><button class="icon-action" title="Generar PDF" onclick="quoteAction('+x.id+',\'PDF\')">&#128196;</button><button class="icon-action" title="Enviar por WhatsApp" onclick="quoteAction('+x.id+',\'WhatsApp\')">&#128241;</button><button class="icon-action" title="Enviar por correo" onclick="quoteAction('+x.id+',\'Email\')">&#9993;</button><button class="icon-action" title="Duplicar" onclick="duplicateQuote('+x.id+')">&#10697;</button><button class="icon-action" title="Editar" onclick="openQuoteModal('+x.id+')">&#9998;</button></div></td></tr>';}).join('');const m=document.getElementById('quoteMetrics');if(m){const open=state.quotes.filter(function(x){return x.estado==='Borrador'||x.estado==='Enviada';});m.innerHTML='<div class="metric-cell"><span>Abiertas</span><strong>'+open.length+'</strong></div><div class="metric-cell"><span>Valor abierto</span><strong>'+formatMoney(open.reduce(function(s,x){return s+x.total;},0))+'</strong></div><div class="metric-cell"><span>Aceptadas</span><strong>'+state.quotes.filter(function(x){return x.estado==='Aceptada';}).length+'</strong></div><div class="metric-cell"><span>Conversión</span><strong>42%</strong></div>';}}
+function renderQuotes(){const body=document.getElementById('quotesTable');if(!body)return;const q=(document.getElementById('quoteSearch').value||'').toLowerCase();const f=document.getElementById('quoteFilter').value;const rows=state.quotes.filter(function(x){return (!f||x.estado===f)&&(!q||(x.numero+' '+x.cliente+' '+x.empresa).toLowerCase().indexOf(q)>=0);});body.innerHTML=rows.map(function(x){const cls=x.estado==='Aceptada'?'pill-success':x.estado==='Rechazada'?'pill-bad':x.estado==='Enviada'?'pill-info':'pill-warning';return '<tr class="no-click"><td><button class="btn btn-ghost btn-small" onclick="showQuote('+x.id+')">'+x.numero+'</button></td><td><strong>'+esc(x.cliente)+'</strong><div class="text-muted" style="font-size:11px">'+esc(x.empresa)+'</div></td><td>'+esc(x.producto)+'</td><td>'+esc(x.fecha)+'</td><td style="font-weight:800">'+formatMoney(x.total)+'</td><td><span class="pill '+cls+'">'+x.estado+'</span></td><td><div class="quote-actions"><button class="icon-action" title="Generar PDF" onclick="quoteAction('+x.id+',\'PDF\')">&#128196;</button><button class="icon-action" title="Enviar por WhatsApp" onclick="quoteAction('+x.id+',\'WhatsApp\')">&#128241;</button><button class="icon-action" title="Enviar por correo" onclick="quoteAction('+x.id+',\'Email\')">&#9993;</button><button class="icon-action" title="Duplicar" onclick="duplicateQuote('+x.id+')">&#10697;</button><button class="icon-action" title="Editar" onclick="openQuoteModal('+x.id+')">&#9998;</button></div></td></tr>';}).join('');const m=document.getElementById('quoteMetrics');if(m){const open=state.quotes.filter(function(x){return x.estado==='Borrador'||x.estado==='Enviada';});m.innerHTML='<div class="metric-cell"><span>En trámite</span><strong>'+open.length+'</strong></div><div class="metric-cell"><span>Monto en trámite</span><strong>'+formatMoney(open.reduce(function(s,x){return s+x.total;},0))+'</strong></div><div class="metric-cell"><span>Aprobados</span><strong>'+state.quotes.filter(function(x){return x.estado==='Aceptada';}).length+'</strong></div><div class="metric-cell"><span>Tasa de aprobación</span><strong>42%</strong></div>';}}
 function quoteAction(id,type){const q=state.quotes.find(function(x){return x.id===id;});if(type!=='PDF'&&q.estado==='Borrador')q.estado='Enviada';renderQuotes();showToast(type==='PDF'?'Vista de PDF generada en la simulación':'Cotización '+q.numero+' enviada por '+type+' en la simulación');}
 function duplicateQuote(id){const q=state.quotes.find(function(x){return x.id===id;});const copy=Object.assign({},q,{id:uid(),numero:'COT-2026-'+String(state.quotes.length+15).padStart(3,'0'),estado:'Borrador'});state.quotes.unshift(copy);renderAll();showToast('Cotización duplicada como '+copy.numero);}
-function showQuote(id){const q=state.quotes.find(function(x){return x.id===id;});const tax=activeTax();document.getElementById('quoteDetail').innerHTML='<span class="ia-badge">'+q.estado+'</span><h2 class="modal-title" style="margin-top:12px">'+q.numero+'</h2><div class="grid-2" style="margin-bottom:12px"><div><div class="context-label">Cliente</div><strong>'+esc(q.cliente)+'</strong><div class="text-muted">'+esc(q.empresa)+'</div></div><div><div class="context-label">Fecha</div><strong>'+esc(q.fecha)+'</strong></div></div><div class="table-container"><table><thead><tr><th>Producto o servicio</th><th>Cantidad</th><th>Precio</th><th>Descuento</th><th>'+tax.taxName+'</th></tr></thead><tbody><tr class="no-click"><td>'+esc(q.producto)+'</td><td>'+q.cantidad+'</td><td>'+formatMoney(q.precio)+'</td><td>'+q.descuento+'%</td><td>'+q.impuesto+'%</td></tr></tbody></table></div><div style="text-align:right;margin-top:16px"><div>Subtotal: <strong>'+formatMoney(q.subtotal)+'</strong></div><div style="font-size:20px;margin-top:4px">Total: <strong>'+formatMoney(q.total)+'</strong></div></div><div class="modal-actions"><button class="btn btn-ghost" onclick="quoteAction('+q.id+',\'PDF\')">Generar PDF</button><button class="btn btn-primary" onclick="closeModal(\'modal-quote-detail\')">Cerrar</button></div>';openModal('modal-quote-detail');}
+function showQuote(id){const q=state.quotes.find(function(x){return x.id===id;});const tax=activeTax();document.getElementById('quoteDetail').innerHTML='<span class="ia-badge">'+q.estado+'</span><h2 class="modal-title" style="margin-top:12px">'+q.numero+'</h2><div class="grid-2" style="margin-bottom:12px"><div><div class="context-label">Cliente</div><strong>'+esc(q.cliente)+'</strong><div class="text-muted">'+esc(q.empresa)+'</div></div><div><div class="context-label">Fecha</div><strong>'+esc(q.fecha)+'</strong></div></div><div class="table-container"><table><thead><tr><th>Tipo de crédito</th><th>Plazo (meses)</th><th>Monto</th><th>Descuento</th><th>'+tax.taxName+'</th></tr></thead><tbody><tr class="no-click"><td>'+esc(q.producto)+'</td><td>'+q.cantidad+'</td><td>'+formatMoney(q.precio)+'</td><td>'+q.descuento+'%</td><td>'+q.impuesto+'%</td></tr></tbody></table></div><div style="text-align:right;margin-top:16px"><div>Subtotal: <strong>'+formatMoney(q.subtotal)+'</strong></div><div style="font-size:20px;margin-top:4px">Total: <strong>'+formatMoney(q.total)+'</strong></div></div><div class="modal-actions"><button class="btn btn-ghost" onclick="quoteAction('+q.id+',\'PDF\')">Generar PDF</button><button class="btn btn-primary" onclick="closeModal(\'modal-quote-detail\')">Cerrar</button></div>';openModal('modal-quote-detail');}
 function renderGoals(){const advisors=document.getElementById('advisorGoals');if(!advisors)return;const goal=360000000,sales=273600000,forecast=state.clientes.filter(function(c){return c.etapa!=='Cerrado';}).reduce(function(s,c){return s+c.valor*c.probabilidad/100;},0),pipe=state.clientes.filter(function(c){return c.etapa!=='Cerrado';}).reduce(function(s,c){return s+c.valor;},0);document.getElementById('monthlyGoal').textContent=formatMoney(goal);document.getElementById('monthlySales').textContent=formatMoney(sales);document.getElementById('forecastPipeline').textContent=formatMoney(pipe);document.getElementById('forecastAI').textContent=formatMoney(forecast);document.getElementById('forecastGoal').textContent=formatMoney(goal);advisors.innerHTML=[['Katherine',92],['Sarah',71],['Carlos',56]].map(function(a){return '<div class="goal-row"><strong>'+a[0]+'</strong><div class="progress-track"><div class="progress-fill" style="width:'+a[1]+'%"></div></div><strong>'+a[1]+'%</strong></div>';}).join('');document.getElementById('forecastInsights').innerHTML='<div class="insights-title">&#10024; Recomendaciones de IA</div><div class="insight-item">&#8250; AVA detecta alta probabilidad de alcanzar el objetivo mensual.</div><div class="insight-item">&#8250; Se recomienda priorizar 3 oportunidades con cotización enviada y actividad reciente.</div><div class="insight-item">&#8250; Las oportunidades contactadas entre 09:00 y 11:00 responden mejor.</div>';}
 function refreshForecast(){showToast('AVA está recalculando el pronóstico...');setTimeout(function(){renderGoals();showToast('Pronóstico actualizado con la actividad más reciente');},650);}
 
@@ -637,7 +825,7 @@ function renderKanban(){
       const relatedTask = state.tasks.find(function(t){ return t.empresa===c.empresa && t.estado!=='Completada'; });
       const lastActivity = (c.actividad&&c.actividad[0]) ? c.actividad[0].fecha : 'Sin actividad reciente';
       return '<div class="kanban-card" draggable="true" ondragstart="onDragStart(event,'+c.id+')" onclick="openFicha('+c.id+')">'+
-        '<div class="kanban-card-empresa">'+c.empresa+(etapa==='Cerrado'?' &check;':'')+'</div>'+
+        '<div class="kanban-card-empresa">'+c.empresa+(etapa==='Aprobada'?' &check;':'')+'</div>'+
         '<div class="kanban-card-contacto">'+c.contacto+'</div>'+
         '<div class="kanban-card-row"><span class="kanban-card-valor">'+formatMoney(c.valor)+'</span><span class="kanban-card-prob">'+c.probabilidad+'% cierre</span></div>'+
         '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px"><span class="score-mini">Puntuación AVA '+ava.score+'</span><span style="font-size:10px;color:'+scoreColor(ava.level)+';font-weight:800">'+ava.level+'</span></div>'+
@@ -652,7 +840,7 @@ function renderKanban(){
       '</div>';
     }).join('');
     return '<div class="kanban-col" ondragover="event.preventDefault();this.classList.add(\'dragover\')" ondragleave="this.classList.remove(\'dragover\')" ondrop="onDropCard(event,\''+etapa+'\')">'+
-      '<div class="kanban-col-head"><div class="kanban-col-title" style="color:'+color+'">'+etapa.toUpperCase()+(etapa==='Cerrado'?' &check;':'')+'<span class="kanban-col-count">'+items.length+'</span></div><div class="kanban-col-sum">'+formatMoney(sum)+'</div></div>'+
+      '<div class="kanban-col-head"><div class="kanban-col-title" style="color:'+color+'">'+etapa.toUpperCase()+(etapa==='Aprobada'?' &check;':'')+'<span class="kanban-col-count">'+items.length+'</span></div><div class="kanban-col-sum">'+formatMoney(sum)+'</div></div>'+
       cards+
       '<button class="kanban-add" onclick="openClienteModal(null,\''+etapa+'\')">+ Agregar</button>'+
     '</div>';
@@ -673,17 +861,17 @@ function moverEtapa(clienteId, etapa){
   if(!c || c.etapa===etapa) return;
   const anterior = c.etapa;
   c.etapa = etapa;
-  if(etapa==='Cerrado') c.probabilidad = 100;
-  c.actividad.unshift({fecha:nowLabel(), texto:'Movido en el proceso comercial: '+anterior+' &rarr; '+etapa});
+  if(etapa==='Aprobada') c.probabilidad = 100;
+  c.actividad.unshift({fecha:nowLabel(), texto:'Movido en el proceso de crédito: '+anterior+' &rarr; '+etapa});
   renderAll();
   showToast(c.empresa+' movido a '+etapa);
 }
 function enriquecerPipelineIA(){
-  const abiertos = state.clientes.filter(function(c){ return c.etapa!=='Cerrado'; });
+  const abiertos = state.clientes.filter(function(c){ return c.etapa!=='Aprobada'; });
   if(!abiertos.length){ showToast('No hay oportunidades abiertas para priorizar'); return; }
   abiertos.sort(function(a,b){ return (b.probabilidad*b.valor) - (a.probabilidad*a.valor); });
   const top = abiertos.slice(0,2).map(function(c){ return c.empresa; }).join(' y ');
-  showToast('IA sugiere priorizar: '+top+' — mayor probabilidad de cierre esta semana');
+  showToast('AVA sugiere priorizar: '+top+' — mayor probabilidad de aprobación esta semana');
 }
 
 /* ============================= EMPRESAS + IA + HISTORIAL ============================= */
@@ -755,7 +943,7 @@ function renderEmpresasTable(){
 function openEmpresaModal(id){
   const e = state.empresas.find(function(x){ return x.id===id; });
   document.getElementById('emp-id').value = e ? e.id : '';
-  document.getElementById('modalEmpresaTitle').textContent = e ? 'Editar empresa' : 'Nueva empresa';
+  document.getElementById('modalEmpresaTitle').textContent = e ? 'Editar institución aliada' : 'Nueva institución aliada';
   document.getElementById('emp-nombre').value=e ? e.nombre : '';
   document.getElementById('emp-nit').value=e ? e.nit : '';
   document.getElementById('emp-sector').value=e ? e.sector : '';
@@ -808,7 +996,7 @@ function openClienteModal(id, etapaPreset){
   if(note) note.textContent = state.currency;
   if(id){
     const c = state.clientes.find(function(x){ return x.id===id; });
-    document.getElementById('modalClienteTitle').textContent = 'Editar contacto';
+    document.getElementById('modalClienteTitle').textContent = 'Editar solicitud';
     document.getElementById('cli-id').value = c.id;
     document.getElementById('cli-empresa').value = c.empresa;
     document.getElementById('cli-empresaId').value = c.empresaId||'';
@@ -821,7 +1009,7 @@ function openClienteModal(id, etapaPreset){
     document.getElementById('cli-valor').value = c.valor;
     document.getElementById('cli-probabilidad').value = c.probabilidad;
   } else {
-    document.getElementById('modalClienteTitle').textContent = 'Nuevo contacto';
+    document.getElementById('modalClienteTitle').textContent = 'Nueva solicitud de crédito';
     document.getElementById('cli-id').value = '';
     if(etapaPreset) document.getElementById('cli-etapa').value = etapaPreset;
   }
@@ -884,7 +1072,7 @@ function renderFichaResumen(c){
   const empresa = state.empresas.find(function(e){ return e.id===c.empresaId; });
   const ava = getAVAScore(c);
   document.getElementById('fdiv-resumen').innerHTML =
-    '<div class="score-card"><div class="score-ring" style="--score:'+ava.score+';--score-color:'+scoreColor(ava.level)+'"><strong>'+ava.score+'</strong></div><div><div class="score-level" style="color:'+scoreColor(ava.level)+'">Nivel '+ava.level+'</div><div style="font-weight:800">Puntuación AVA: '+ava.score+'/100</div><div class="text-muted" style="font-size:11.5px">'+(ava.level==='Alto'?'Alta':ava.level==='Medio'?'Media':'Baja')+' probabilidad de cierre</div></div></div>'+
+    '<div class="score-card"><div class="score-ring" style="--score:'+ava.score+';--score-color:'+scoreColor(ava.level)+'"><strong>'+ava.score+'</strong></div><div><div class="score-level" style="color:'+scoreColor(ava.level)+'">Nivel '+ava.level+'</div><div style="font-weight:800">Puntuación AVA: '+ava.score+'/100</div><div class="text-muted" style="font-size:11.5px">'+(ava.level==='Alto'?'Alta':ava.level==='Medio'?'Media':'Baja')+' probabilidad de aprobación</div></div></div>'+
     '<div class="ia-panel" style="margin:0 0 15px"><div class="ia-field-label">¿Por qué tiene esta puntuación?</div><ul class="score-factors">'+ava.factors.map(function(f){return '<li>&check; '+esc(f)+'</li>';}).join('')+'</ul></div>'+
     '<div class="action-tile-row">'+
       '<button class="action-tile" onclick="openEventoModal('+c.id+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>Agendar</span></button>'+
@@ -894,12 +1082,12 @@ function renderFichaResumen(c){
     '</div>'+
     '<button class="btn btn-primary" style="width:100%;margin-bottom:16px" onclick="openGestionModal('+c.id+')">&#128222; Registrar gestión</button>'+
     '<div class="fichaField"><div class="fichaFieldLabel">Estado</div><div class="fichaFieldVal">'+pill(c.estado)+'</div></div>'+
-    '<div class="fichaField"><div class="fichaFieldLabel">Etapa del proceso comercial</div><div class="fichaFieldVal"><span class="pill pill-info">'+c.etapa+'</span></div></div>'+
-    '<div class="fichaField"><div class="fichaFieldLabel">Valor de oportunidad</div><div class="fichaFieldVal">'+formatMoney(c.valor)+' &middot; '+c.probabilidad+'% probabilidad</div></div>'+
+    '<div class="fichaField"><div class="fichaFieldLabel">Etapa del proceso de crédito</div><div class="fichaFieldVal"><span class="pill pill-info">'+c.etapa+'</span></div></div>'+
+    '<div class="fichaField"><div class="fichaFieldLabel">Monto solicitado</div><div class="fichaFieldVal">'+formatMoney(c.valor)+' &middot; '+c.probabilidad+'% probabilidad</div></div>'+
     '<div class="fichaField"><div class="fichaFieldLabel">Canal de origen</div><div class="fichaFieldVal"><span class="pill" style="background:'+(CANAL_COLOR[c.canal]||'#8a97ac')+'22;color:'+(CANAL_COLOR[c.canal]||'#8a97ac')+'">'+c.canal+'</span></div></div>'+
     '<div class="fichaField"><div class="fichaFieldLabel">Teléfono</div><div class="fichaFieldVal">'+c.telefono+'</div></div>'+
-    '<div class="fichaField"><div class="fichaFieldLabel">Empresa vinculada</div><div class="fichaFieldVal">'+(empresa ? empresa.nombre+' · '+empresa.sector : 'Sin empresa vinculada')+'</div></div>'+
-    '<button class="btn btn-ghost" style="width:100%;margin-top:4px" onclick="openClienteModal('+c.id+')">Editar datos del contacto</button>';
+    '<div class="fichaField"><div class="fichaFieldLabel">Institución aliada vinculada</div><div class="fichaFieldVal">'+(empresa ? empresa.nombre+' · '+empresa.sector : 'Sin institución vinculada')+'</div></div>'+
+    '<button class="btn btn-ghost" style="width:100%;margin-top:4px" onclick="openClienteModal('+c.id+')">Editar datos del solicitante</button>';
 }
 function renderFichaActividad(c){
   document.getElementById('fdiv-actividad').innerHTML = c.actividad.length ? c.actividad.map(function(a){
@@ -1422,7 +1610,7 @@ function renderUsuariosTable(){
   const filtrados = state.usuarios.filter(function(u){ return !q || u.nombre.toLowerCase().indexOf(q)>=0 || u.correo.toLowerCase().indexOf(q)>=0; });
   document.getElementById('usuariosTable').innerHTML = filtrados.map(function(u){
     const roleClass = u.rol==='Administrador'?'role-Administrador':u.rol==='Supervisor'?'role-Supervisor':u.rol==='Asesor'?'role-Asesor':'role-Lectura';
-    const roleLabel = u.rol==='Asesor' ? 'Asesor Comercial' : (u.rol==='Lectura' ? 'Solo lectura' : u.rol);
+    const roleLabel = u.rol==='Asesor' ? 'Gestor de Crédito' : (u.rol==='Lectura' ? 'Solo lectura' : u.rol);
     return '<tr class="no-click">'+
       '<td style="font-weight:700">'+u.nombre+'</td>'+
       '<td>'+u.correo+'</td>'+
@@ -1469,10 +1657,10 @@ function sendAvaMessage(){
   box.scrollTop = box.scrollHeight;
   setTimeout(function(){
     const low = msg.toLowerCase();
-    let reply = 'Anoté tu mensaje. Un asesor comercial dará seguimiento desde AVA CRM.';
-    if(low.indexOf('precio')>=0||low.indexOf('costo')>=0||low.indexOf('cuánto')>=0) reply = 'Puedo ayudarte a preparar una cotización vinculada a la oportunidad. ¿Qué producto o servicio deseas incluir?';
-    else if(low.indexOf('demo')>=0) reply = '¡Con gusto! Puedo agendar una demostración del producto o servicio de interés. ¿Qué día te viene bien?';
-    else if(low.indexOf('hola')>=0) reply = '¡Hola! Soy AVA, el asistente de AVA CRM Comercial. ¿En qué oportunidad o tarea deseas trabajar?';
+    let reply = 'Anoté tu mensaje. Un gestor dará seguimiento a tu solicitud desde AVA CRM.';
+    if(low.indexOf('monto')>=0||low.indexOf('cuánto')>=0||low.indexOf('cuanto')>=0) reply = 'Puedo ayudarte a registrar el monto que necesitas para tu solicitud de crédito. ¿Qué monto deseas solicitar?';
+    else if(low.indexOf('buró')>=0||low.indexOf('buro')>=0) reply = 'La consulta de buró se realiza una vez tu solicitud está registrada. ¿Deseas que te ayude a completarla?';
+    else if(low.indexOf('hola')>=0) reply = '¡Hola! Soy AVA, el asistente de crédito de Veteranos RD. ¿Deseas iniciar una solicitud de crédito?';
     box.insertAdjacentHTML('beforeend', '<div class="ava-preview-msg">'+reply+'</div>');
     box.scrollTop = box.scrollHeight;
   }, 500);
@@ -1480,19 +1668,17 @@ function sendAvaMessage(){
 
 /* ============================= RECORRIDO GUIADO ============================= */
 const tourSteps = [
-  {view:'dashboard', target:'.dashboard-hero', title:'Panel de control', text:'Indicadores, gráficas, metas y pronóstico con IA se consultan ahora en una sola vista ejecutiva.'},
-  {view:'pipeline', target:'#kanbanBoard', title:'Proceso Comercial', text:'Gestiona oportunidades por etapa, valor, probabilidad y Puntuación AVA.', action:function(){closeDrawer();}},
-  {view:'agenda', target:'#calendarMini', title:'Agenda', text:'Consulta eventos comerciales y programa reuniones vinculadas a contactos.'},
-  {view:'empresas', target:'#empresasTable', title:'Empresas', text:'Administra empresas, edita sus datos y consulta contactos, historial y enriquecimiento con IA.'},
-  {view:'clientes', target:'#clientesTableWrap', title:'Contactos', text:'Revisa fichas, oportunidades y acciones rápidas de agenda, correo, SMS y WhatsApp.'},
-  {view:'gestiones', target:'#followupAlerts', title:'Gestiones Comerciales', text:'Centraliza tareas, alertas de seguimiento e historial de actividades.', action:function(){switchGestionesTab('tareas',document.querySelectorAll('#page-gestiones .page-tools .marketing-tab')[0]);}},
-  {view:'cotizaciones', target:'#quotesTable', title:'Cotizaciones', text:'Crea, edita, duplica y envía cotizaciones simuladas por correo o WhatsApp.'},
-  {view:'productos', target:'#productsTable', title:'Productos y servicios', text:'Mantén el catálogo que alimenta oportunidades y cotizaciones.'},
-  {view:'marketing', target:'.workspace-grid', title:'Marketing', text:'Gestiona Bandeja AVAChat, correo, SMS, WhatsApp y campañas desde un solo módulo.', action:function(){switchMarketingTab('avachat',document.querySelectorAll('#page-marketing .marketing-tabs .marketing-tab')[0]);}},
-  {view:'reportes', target:'.report-grid', title:'Reportes', text:'Analiza rendimiento, proceso comercial, canales y tendencias con exportación a Excel.'},
-  {view:'ads', target:'#adsGrid', title:'Clientes ADS', text:'Conecta campañas y convierte clientes potenciales en oportunidades.'},
-  {view:'automatizaciones', target:'#flowCanvas', title:'Automatizaciones', text:'Diseña flujos de seguimiento, recordatorios y reactivación comercial.'},
-  {view:'apis', target:'#apisGrid', title:'APIs', text:'Centraliza integraciones y verifica su estado de conexión.'},
+  {view:'dashboard', target:'.dashboard-hero', title:'Dashboard', text:'Cartera activa, solicitudes en proceso, mora y colocación se consultan en una sola vista ejecutiva.'},
+  {view:'marketing', target:'.workspace-grid', title:'AVA', text:'AVA recibe la solicitud del veterano: identificación, monto, ingresos y documentos, de forma conversacional.', action:function(){switchMarketingTab('avachat',document.querySelectorAll('#page-marketing .marketing-tabs .marketing-tab')[0]);}},
+  {view:'clientes', target:'#clientesTableWrap', title:'Solicitudes de Crédito', text:'Cada solicitud capturada por AVA se convierte en un expediente: monto, etapa, documentos e historial.'},
+  {view:'pipeline', target:'#kanbanBoard', title:'Prospectos / Leads', text:'Sigue cada solicitante por etapa: nueva solicitud, en revisión, buró consultado, precalificada, aprobada.', action:function(){closeDrawer();}},
+  {view:'buro', target:'#buroTable', title:'Buró de Crédito', text:'Consulta de buró simulada por solicitud: riesgo, obligaciones y alertas.'},
+  {view:'precalificacion', target:'#precalificacionTable', title:'Precalificación', text:'Motor de precalificación simulado: capacidad estimada, riesgo y resultado automatizado.'},
+  {view:'cotizaciones', target:'#quotesTable', title:'Créditos', text:'El ciclo del crédito: cliente, monto, plazo, saldo y estado, simulado de inicio a fin.'},
+  {view:'cobranza', target:'#cobranzaTable', title:'Cobranza / Cartera', text:'Cartera total, créditos al día, vencimientos y mora, con historial de contacto y promesas de pago.'},
+  {view:'gestiones', target:'#followupAlerts', title:'Gestiones', text:'Centraliza tareas, alertas de seguimiento e historial de actividades relacionadas con las solicitudes.', action:function(){switchGestionesTab('tareas',document.querySelectorAll('#page-gestiones .page-tools .marketing-tab')[0]);}},
+  {view:'agenda', target:'#calendarMini', title:'Agenda', text:'Consulta citas y programa seguimientos vinculados a solicitantes.'},
+  {view:'reportes', target:'.report-grid', title:'Reportes', text:'La gerencia visualiza solicitudes, colocación, cartera, cobranza y productividad con exportación a Excel.'},
   {view:'config', target:'#usuariosTable', title:'Configuración', text:'Administra usuarios, roles, moneda y preferencias del sistema.'}
 ];
 let tourIdx=0, tourTargetEl=null;

@@ -11,6 +11,12 @@ import ProductosPage from './pages/ProductosPage';
 import MetasPage from './pages/MetasPage';
 import EmpresasPage from './pages/EmpresasPage';
 import ClientesPage from './pages/ClientesPage';
+import SaludPage from './pages/SaludPage';
+import CooperativaPage from './pages/CooperativaPage';
+import VoluntariadoPage from './pages/VoluntariadoPage';
+import BuroPage from './pages/BuroPage';
+import PrecalificacionPage from './pages/PrecalificacionPage';
+import CobranzaPage from './pages/CobranzaPage';
 import GestionPage from './pages/GestionPage';
 import SmsPage from './pages/SmsPage';
 import AdsPage from './pages/AdsPage';
@@ -50,6 +56,12 @@ export default function App() {
             <MetasPage />
             <EmpresasPage />
             <ClientesPage />
+            <BuroPage />
+            <PrecalificacionPage />
+            <CobranzaPage />
+            <SaludPage />
+            <CooperativaPage />
+            <VoluntariadoPage />
             <GestionPage />
             <SmsPage />
             <AdsPage />

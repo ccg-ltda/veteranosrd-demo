@@ -1,0 +1,18 @@
+<section id="page-cooperativa" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Cooperativa</h2><p class="text-muted" style="margin:0;font-size:12.5px">Aportes y movimientos cooperativos de los afiliados (COOPERA / Banreservas, datos simulados).</p></div><button class="btn btn-primary" onclick="nuevoMovimientoCooperativa()">+ Nuevo movimiento</button></div>
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-search">
+              <input type="text" placeholder="Buscar afiliado o tipo de aporte..." id="searchCooperativa" oninput="renderCooperativa()">
+              <span class="search-icon">&#128269;</span>
+            </div>
+          </div>
+          <div class="table-scroll">
+          <table class="mobile-cards">
+            <thead><tr><th>Afiliado</th><th>Tipo de aporte</th><th>Monto</th><th>Fecha</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody id="cooperativaTable"></tbody>
+          </table>
+          </div>
+        </div>
+        <div class="simulation-note" style="margin-top:10px">&#9432; Información simulada para efectos de demostración.</div>
+      </section>

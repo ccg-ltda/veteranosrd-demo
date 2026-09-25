@@ -1,26 +1,26 @@
 <section id="page-dashboard" class="page">
         <div class="dashboard-hero">
-          <div><h2>Visión comercial de hoy</h2><p>Actividad, avance de meta y señales de IA consolidadas para priorizar decisiones.</p></div>
-          <div class="hero-score"><div><span>Cumplimiento</span><strong>76%</strong></div><div><span>Pronóstico IA</span><strong id="dashForecast">—</strong></div><div><span>Confianza</span><strong>87%</strong></div></div>
+          <div><h2>Visión del ciclo de crédito hoy</h2><p>Solicitudes, prospectos, cartera y cobranza consolidados, con señales de AVA para priorizar decisiones.</p></div>
+          <div class="hero-score"><div><span>Colocación del mes</span><strong>76%</strong></div><div><span>Pronóstico AVA</span><strong id="dashForecast">—</strong></div><div><span>Confianza</span><strong>87%</strong></div></div>
         </div>
         <div class="kpi-grid" id="kpiGrid"></div>
         <div class="dashboard-grid">
           <div class="dashboard-column">
             <div class="surface chart-card">
-              <div class="chart-heading"><h3>Ventas y pronóstico acumulado</h3><div class="chart-legend"><span><i style="background:#2f6fed"></i>Ventas</span><span><i style="background:#7c3aed"></i>Pronóstico IA</span></div></div>
-              <div class="trend-chart"><svg class="trend-svg" viewBox="0 0 600 178" preserveAspectRatio="none"><defs><linearGradient id="salesArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fed" stop-opacity=".28"/><stop offset="1" stop-color="#2f6fed" stop-opacity="0"/></linearGradient></defs><path d="M0,152 C70,143 85,126 145,130 S235,91 292,102 S390,60 448,73 S535,27 600,34 L600,178 L0,178 Z" fill="url(#salesArea)"/><path d="M0,152 C70,143 85,126 145,130 S235,91 292,102 S390,60 448,73 S535,27 600,34" fill="none" stroke="#2f6fed" stroke-width="4"/><path d="M0,146 C70,132 90,118 145,118 S235,83 292,89 S390,46 448,55 S535,18 600,20" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="7 6"/></svg></div>
+              <div class="chart-heading"><h3>Colocación y proyección acumulada</h3><div class="chart-legend"><span><i style="background:#2f6fed"></i>Colocado</span><span><i style="background:#d92440"></i>Pronóstico AVA</span></div></div>
+              <div class="trend-chart"><svg class="trend-svg" viewBox="0 0 600 178" preserveAspectRatio="none"><defs><linearGradient id="salesArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f6fed" stop-opacity=".28"/><stop offset="1" stop-color="#2f6fed" stop-opacity="0"/></linearGradient></defs><path d="M0,152 C70,143 85,126 145,130 S235,91 292,102 S390,60 448,73 S535,27 600,34 L600,178 L0,178 Z" fill="url(#salesArea)"/><path d="M0,152 C70,143 85,126 145,130 S235,91 292,102 S390,60 448,73 S535,27 600,34" fill="none" stroke="#2f6fed" stroke-width="4"/><path d="M0,146 C70,132 90,118 145,118 S235,83 292,89 S390,46 448,55 S535,18 600,20" fill="none" stroke="#d92440" stroke-width="3" stroke-dasharray="7 6"/></svg></div>
               <div class="trend-labels"><span>Sem 1</span><span>Sem 2</span><span>Sem 3</span><span>Sem 4</span><span>Hoy</span></div>
             </div>
             <div class="grid-2" style="margin:0">
-              <div class="surface chart-card"><div class="chart-heading"><h3>Clientes potenciales por día</h3><span class="text-muted" style="font-size:10.5px">Últimos 7 días</span></div><div class="chart-bars" id="chartLeadsDia"></div></div>
-              <div class="surface chart-card"><div class="chart-heading"><h3>Proceso comercial</h3><span class="ia-badge">Conversión</span></div><div id="chartFunnel"></div></div>
+              <div class="surface chart-card"><div class="chart-heading"><h3>Nuevas solicitudes de crédito por día</h3><span class="text-muted" style="font-size:10.5px">Últimos 7 días</span></div><div class="chart-bars" id="chartLeadsDia"></div></div>
+              <div class="surface chart-card"><div class="chart-heading"><h3>Proceso de crédito</h3><span class="ia-badge">Avance</span></div><div id="chartFunnel"></div></div>
             </div>
           </div>
           <div class="dashboard-column">
-            <div class="surface" style="padding:18px"><div class="chart-heading"><h3>Meta comercial del mes</h3><button class="btn btn-ghost btn-small" onclick="focusGoals()">Ver detalle</button></div><div style="display:flex;justify-content:space-between;margin:12px 0 8px"><span class="text-muted">Ventas actuales</span><strong id="dashSales">—</strong></div><div class="progress-track"><div class="progress-fill" style="width:76%"></div></div><div style="display:flex;justify-content:space-between;margin-top:7px;font-size:11.5px"><span>76% alcanzado</span><strong id="dashGoal">—</strong></div></div>
-            <div class="surface chart-card"><div class="chart-heading"><h3>Canales de origen</h3><span class="text-muted" style="font-size:10.5px">Distribución actual</span></div><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap" id="chartCanales"></div></div>
+            <div class="surface" style="padding:18px"><div class="chart-heading"><h3>Meta de colocación del mes</h3><button class="btn btn-ghost btn-small" onclick="focusGoals()">Ver detalle</button></div><div style="display:flex;justify-content:space-between;margin:12px 0 8px"><span class="text-muted">Colocado actual</span><strong id="dashSales">—</strong></div><div class="progress-track"><div class="progress-fill" style="width:76%"></div></div><div style="display:flex;justify-content:space-between;margin-top:7px;font-size:11.5px"><span>76% alcanzado</span><strong id="dashGoal">—</strong></div></div>
+            <div class="surface chart-card"><div class="chart-heading"><h3>Canales de ingreso</h3><span class="text-muted" style="font-size:10.5px">Distribución actual</span></div><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap" id="chartCanales"></div></div>
             <div class="surface" style="padding:18px"><div class="chart-heading"><h3>Recomendaciones estratégicas</h3><span class="ia-badge">&#10024; AVA</span></div><div class="strategic-list" id="dashboardStrategies"></div><div class="insights-box" id="insightsBox" style="display:none"></div></div>
-            <div class="surface chart-card" style="min-height:210px"><div class="chart-heading"><h3>Ventas mensuales</h3><span class="text-muted" style="font-size:10.5px">6 meses</span></div><div class="chart-bars" id="chartRevenue"></div></div>
+            <div class="surface chart-card" style="min-height:210px"><div class="chart-heading"><h3>Cartera colocada mensual</h3><span class="text-muted" style="font-size:10.5px">6 meses</span></div><div class="chart-bars" id="chartRevenue"></div></div>
           </div>
         </div>
         <div id="dashboardGoals" class="dashboard-goals"></div>

@@ -1,0 +1,19 @@
+<section id="page-cobranza" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Cobranza / Cartera</h2><p class="text-muted" style="margin:0;font-size:12.5px">Cartera de créditos activos, vencimientos y gestión de cobranza (datos simulados).</p></div><button class="btn btn-primary" onclick="registrarPromesaPago()">+ Registrar promesa de pago</button></div>
+        <div class="metric-strip" id="cobranzaKpis"></div>
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-search">
+              <input type="text" placeholder="Buscar cliente o crédito..." id="searchCobranza" oninput="renderCobranza()">
+              <span class="search-icon">&#128269;</span>
+            </div>
+          </div>
+          <div class="table-scroll">
+          <table class="mobile-cards">
+            <thead><tr><th>Cliente</th><th>Crédito</th><th>Saldo</th><th>Próx. vencimiento</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody id="cobranzaTable"></tbody>
+          </table>
+          </div>
+        </div>
+        <div class="simulation-note" style="margin-top:10px">&#9432; Cartera y cobranza simuladas. Sin cálculos financieros reales.</div>
+      </section>

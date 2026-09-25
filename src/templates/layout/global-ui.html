@@ -2,13 +2,13 @@
 <div id="modal-cliente" class="modal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeModal('modal-cliente')">&#10005;</button>
-    <h2 class="modal-title" id="modalClienteTitle">Nuevo contacto</h2>
+    <h2 class="modal-title" id="modalClienteTitle">Nueva solicitud de crédito</h2>
     <form id="formCliente" onsubmit="submitCliente(event)">
       <input type="hidden" id="cli-id">
-      <div class="form-group"><label>Empresa</label><input type="text" id="cli-empresa" required></div>
+      <div class="form-group"><label>Institución / cuerpo (referencia)</label><input type="text" id="cli-empresa" required></div>
       <div class="form-row">
-        <div class="form-group"><label>Contacto</label><input type="text" id="cli-contacto" required></div>
-        <div class="form-group"><label>Empresa vinculada (opcional)</label><select id="cli-empresaId"><option value="">— Sin vincular —</option></select></div>
+        <div class="form-group"><label>Nombre del solicitante</label><input type="text" id="cli-contacto" required></div>
+        <div class="form-group"><label>Institución aliada vinculada (opcional)</label><select id="cli-empresaId"><option value="">— Sin vincular —</option></select></div>
       </div>
       <div class="form-row">
         <div class="form-group"><label>Correo</label><input type="email" id="cli-email" required></div>
@@ -16,14 +16,14 @@
       </div>
       <div class="form-row3">
         <div class="form-group"><label>Estado</label><select id="cli-estado" required><option>Prospecto</option><option>Activo</option><option>Inactivo</option></select></div>
-        <div class="form-group"><label>Etapa del proceso comercial</label><select id="cli-etapa" required><option>Prospecto</option><option>Contactado</option><option>Negociación</option><option>Propuesta</option><option>Cerrado</option></select></div>
+        <div class="form-group"><label>Etapa del proceso de crédito</label><select id="cli-etapa" required><option>Nueva solicitud</option><option>En revisión</option><option>Buró consultado</option><option>Precalificada</option><option>Aprobada</option></select></div>
         <div class="form-group"><label>Canal de origen</label><select id="cli-canal"><option>WhatsApp</option><option>Email</option><option>Llamada</option><option>SMS</option><option>Bot IA</option><option>Ads</option></select></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label>Valor de oportunidad (COP)</label><input type="number" id="cli-valor" min="0" step="100000" placeholder="30000000" required></div>
-        <div class="form-group"><label>Probabilidad de cierre (%)</label><input type="number" id="cli-probabilidad" min="0" max="100" step="5" placeholder="40" required></div>
+        <div class="form-group"><label>Monto solicitado (RD$)</label><input type="number" id="cli-valor" min="0" step="100000" placeholder="4000000" required></div>
+        <div class="form-group"><label>Probabilidad de aprobación (%)</label><input type="number" id="cli-probabilidad" min="0" max="100" step="5" placeholder="40" required></div>
       </div>
-      <div class="form-hint" style="margin-bottom:14px">El valor se registra en pesos colombianos (COP); se convierte automáticamente a la moneda activa (<span id="cli-currency-note">COP</span>) en las vistas.</div>
+      <div class="form-hint" style="margin-bottom:14px">El monto se registra internamente en pesos colombianos (COP) por compatibilidad del motor; se convierte automáticamente a la moneda activa (<span id="cli-currency-note">DOP</span>) en las vistas.</div>
       <div class="modal-actions">
         <button type="button" class="btn btn-ghost" onclick="closeModal('modal-cliente')">Cancelar</button>
         <button type="submit" class="btn btn-primary">Guardar contacto</button>
@@ -36,7 +36,7 @@
 <div id="modal-empresa" class="modal">
   <div class="modal-content">
     <button class="modal-close" onclick="closeModal('modal-empresa')">&#10005;</button>
-    <h2 class="modal-title" id="modalEmpresaTitle">Nueva empresa</h2>
+    <h2 class="modal-title" id="modalEmpresaTitle">Nueva institución aliada</h2>
     <form onsubmit="submitEmpresa(event)">
       <input type="hidden" id="emp-id">
       <div class="form-group"><label>Razón social</label><input type="text" id="emp-nombre" required></div>
@@ -160,12 +160,12 @@
     <form onsubmit="submitGestion(event)">
       <div class="form-group"><label>Vincular gestión a</label>
         <select id="ges-vinculo" onchange="toggleGestionVinculo()">
-          <option value="contacto">Un contacto</option>
-          <option value="empresa">Una empresa</option>
+          <option value="contacto">Un solicitante</option>
+          <option value="empresa">Una institución aliada</option>
         </select>
       </div>
-      <div class="form-group" id="ges-clienteWrap"><label>Contacto</label><select id="ges-clienteId" required></select></div>
-      <div class="form-group hidden" id="ges-empresaWrap"><label>Empresa</label><select id="ges-empresaId"></select></div>
+      <div class="form-group" id="ges-clienteWrap"><label>Solicitante</label><select id="ges-clienteId" required></select></div>
+      <div class="form-group hidden" id="ges-empresaWrap"><label>Institución aliada</label><select id="ges-empresaId"></select></div>
       <div class="form-row">
         <div class="form-group"><label>Estado de la gestión</label>
           <select id="ges-estado" required>
@@ -176,10 +176,10 @@
         <div class="form-group"><label>Canal</label><select id="ges-canal"><option>Llamada</option><option>WhatsApp</option><option>Email</option><option>SMS</option><option>Presencial</option></select></div>
       </div>
       <div class="form-row">
-      <div class="form-group"><label>Producto / servicio de interés</label><input type="text" id="ges-producto" placeholder="Suscripción, soporte, consultoría..." required></div>
+      <div class="form-group"><label>Tipo de crédito de interés</label><input type="text" id="ges-producto" placeholder="Crédito personal, refinanciamiento..." required></div>
         <div class="form-group"><label>Próxima fecha de seguimiento</label><input type="date" id="ges-fecha"></div>
       </div>
-      <div class="form-group"><label>Asesor responsable</label><input type="text" id="ges-asesor" placeholder="Katherine Silva" required></div>
+      <div class="form-group"><label>Gestor responsable</label><input type="text" id="ges-asesor" placeholder="Katherine Silva" required></div>
       <div class="form-group"><label>Detalle de la gestión (nota)</label><textarea id="ges-detalle" rows="4" placeholder="¿Qué se habló? ¿Cuál es el siguiente paso?" required></textarea></div>
       <div class="modal-actions">
         <button type="button" class="btn btn-ghost" onclick="closeModal('modal-gestion')">Cancelar</button>
@@ -202,7 +202,7 @@
           <select id="usr-rol" required>
             <option value="Administrador">Administrador</option>
             <option value="Supervisor">Supervisor</option>
-            <option value="Asesor">Asesor Comercial</option>
+            <option value="Asesor">Gestor de Crédito</option>
             <option value="Lectura">Solo lectura</option>
           </select>
         </div>
@@ -217,13 +217,23 @@
 </div>
 
 <!-- MODAL TAREA -->
-<div id="modal-task" class="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal('modal-task')">&#10005;</button><h2 class="modal-title">Nueva tarea comercial</h2><form onsubmit="submitTask(event)"><div class="form-group"><label>Tipo de tarea</label><select id="task-type" required><option>Llamar cliente</option><option>Enviar propuesta</option><option>Realizar seguimiento</option><option>Preparar demostración</option><option>Enviar cotización</option><option>Cobrar factura</option><option>Reunión comercial</option></select></div><div class="form-row"><div class="form-group"><label>Cliente</label><input id="task-client" required></div><div class="form-group"><label>Empresa</label><input id="task-company" required></div></div><div class="form-row"><div class="form-group"><label>Responsable</label><select id="task-owner"><option>Katherine Silva</option><option>Sarah Chen</option><option>Carlos Méndez</option></select></div><div class="form-group"><label>Prioridad</label><select id="task-priority"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div></div><div class="form-row"><div class="form-group"><label>Fecha</label><input type="date" id="task-date" required></div><div class="form-group"><label>Hora</label><input type="time" id="task-time" required></div></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-task')">Cancelar</button><button class="btn btn-primary" type="submit">Crear tarea</button></div></form></div></div>
+<div id="modal-task" class="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal('modal-task')">&#10005;</button><h2 class="modal-title">Nueva tarea</h2><form onsubmit="submitTask(event)"><div class="form-group"><label>Tipo de tarea</label><select id="task-type" required><option>Llamar solicitante</option><option>Consultar buró</option><option>Revisar documentos</option><option>Precalificar solicitud</option><option>Notificar aprobación</option><option>Dar seguimiento a mora</option><option>Reunión de gestión</option></select></div><div class="form-row"><div class="form-group"><label>Solicitante</label><input id="task-client" required></div><div class="form-group"><label>Institución / referencia</label><input id="task-company" required></div></div><div class="form-row"><div class="form-group"><label>Responsable</label><select id="task-owner"><option>Katherine Silva</option><option>Sarah Chen</option><option>Carlos Méndez</option></select></div><div class="form-group"><label>Prioridad</label><select id="task-priority"><option>Alta</option><option selected>Media</option><option>Baja</option></select></div></div><div class="form-row"><div class="form-group"><label>Fecha</label><input type="date" id="task-date" required></div><div class="form-group"><label>Hora</label><input type="time" id="task-time" required></div></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-task')">Cancelar</button><button class="btn btn-primary" type="submit">Crear tarea</button></div></form></div></div>
 
 <!-- MODAL COTIZACIÓN -->
-<div id="modal-quote" class="modal"><div class="modal-content wide"><button class="modal-close" onclick="closeModal('modal-quote')">&#10005;</button><h2 class="modal-title" id="quoteModalTitle">Nueva cotización</h2><form onsubmit="submitQuote(event)"><input type="hidden" id="quote-id"><div class="form-row"><div class="form-group"><label>Cliente</label><input id="quote-client" required></div><div class="form-group"><label>Empresa</label><input id="quote-company" required></div></div><div class="form-group"><label>Producto o servicio</label><select id="quote-product" required onchange="fillQuotePrice()"></select></div><div class="form-row3"><div class="form-group"><label>Cantidad</label><input type="number" min="1" value="1" id="quote-qty" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Precio</label><input type="number" min="0" id="quote-price" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Descuento (%)</label><input type="number" min="0" max="100" value="0" id="quote-discount" required oninput="updateQuotePreview()"></div></div><div class="form-row"><div class="form-group"><label id="quoteTaxLabel">IVA (Colombia) (%)</label><input type="number" min="0" value="19" id="quote-tax" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Fecha</label><input type="date" id="quote-date" required></div></div><div class="surface-2" style="padding:14px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap"><span>Subtotal: <strong id="quote-subtotal">—</strong></span><span>Total: <strong id="quote-total">—</strong></span></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-quote')">Cancelar</button><button type="submit" class="btn btn-primary">Guardar cotización</button></div></form></div></div>
+<div id="modal-quote" class="modal"><div class="modal-content wide"><button class="modal-close" onclick="closeModal('modal-quote')">&#10005;</button><h2 class="modal-title" id="quoteModalTitle">Nuevo crédito</h2><form onsubmit="submitQuote(event)"><input type="hidden" id="quote-id"><div class="form-row"><div class="form-group"><label>Cliente</label><input id="quote-client" required></div><div class="form-group"><label>Institución / referencia</label><input id="quote-company" required></div></div><div class="form-group"><label>Tipo de crédito</label><select id="quote-product" required onchange="fillQuotePrice()"></select></div><div class="form-row3"><div class="form-group"><label>Plazo (meses)</label><input type="number" min="1" value="1" id="quote-qty" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Monto</label><input type="number" min="0" id="quote-price" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Descuento (%)</label><input type="number" min="0" max="100" value="0" id="quote-discount" required oninput="updateQuotePreview()"></div></div><div class="form-row"><div class="form-group"><label id="quoteTaxLabel">IVA (Colombia) (%)</label><input type="number" min="0" value="19" id="quote-tax" required oninput="updateQuotePreview()"></div><div class="form-group"><label>Fecha</label><input type="date" id="quote-date" required></div></div><div class="surface-2" style="padding:14px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap"><span>Subtotal: <strong id="quote-subtotal">—</strong></span><span>Total: <strong id="quote-total">—</strong></span></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-quote')">Cancelar</button><button type="submit" class="btn btn-primary">Guardar crédito</button></div></form></div></div>
 
 <!-- MODAL PRODUCTO -->
 <div id="modal-product" class="modal"><div class="modal-content"><button class="modal-close" onclick="closeModal('modal-product')">&#10005;</button><h2 class="modal-title">Nuevo producto o servicio</h2><form onsubmit="submitProduct(event)"><div class="form-group"><label>Nombre</label><input id="product-name" required></div><div class="form-group"><label>Descripción</label><textarea id="product-desc" rows="3" required></textarea></div><div class="form-row3"><div class="form-group"><label>Precio</label><input type="number" min="0" id="product-price" required></div><div class="form-group"><label id="productTaxLabel">IVA (Colombia) (%)</label><input type="number" min="0" id="product-tax" value="19" required></div><div class="form-group"><label>Comisión (%)</label><input type="number" min="0" id="product-commission" value="5" required></div></div><div class="form-group"><label>Estado</label><select id="product-status"><option>Activo</option><option>Inactivo</option></select></div><div class="modal-actions"><button type="button" class="btn btn-ghost" onclick="closeModal('modal-product')">Cancelar</button><button class="btn btn-primary" type="submit">Guardar</button></div></form></div></div>
+
+<!-- MODAL DETALLE GENÉRICO (Salud / Cooperativa / Voluntariado) -->
+<div id="modal-detalle" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-detalle')">&#10005;</button>
+    <h2 class="modal-title" id="detalleTitulo">Detalle</h2>
+    <div id="detalleBody"></div>
+    <div class="modal-actions"><button type="button" class="btn btn-primary" onclick="closeModal('modal-detalle')">Cerrar</button></div>
+  </div>
+</div>
 
 <!-- MODAL DETALLE COTIZACIÓN -->
 <div id="modal-quote-detail" class="modal"><div class="modal-content wide"><button class="modal-close" onclick="closeModal('modal-quote-detail')">&#10005;</button><div id="quoteDetail"></div></div></div>

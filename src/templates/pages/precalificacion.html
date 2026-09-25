@@ -1,0 +1,18 @@
+<section id="page-precalificacion" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Precalificación</h2><p class="text-muted" style="margin:0;font-size:12.5px">Motor de precalificación simulado: combina datos de la solicitud y del buró. No representa una fórmula financiera real.</p></div></div>
+        <div class="table-container">
+          <div class="table-header">
+            <div class="table-search">
+              <input type="text" placeholder="Buscar solicitante..." id="searchPrecalificacion" oninput="renderPrecalificacion()">
+              <span class="search-icon">&#128269;</span>
+            </div>
+          </div>
+          <div class="table-scroll">
+          <table class="mobile-cards">
+            <thead><tr><th>Solicitante</th><th>Monto solicitado</th><th>Capacidad estimada</th><th>Resultado</th><th>Riesgo</th><th>Acción</th></tr></thead>
+            <tbody id="precalificacionTable"></tbody>
+          </table>
+          </div>
+        </div>
+        <div class="simulation-note" style="margin-top:10px">&#9432; Resultado simulado para efectos de demostración del concepto de automatización de la decisión.</div>
+      </section>

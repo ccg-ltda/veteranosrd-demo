@@ -1,8 +1,9 @@
 <section id="page-clientes" class="page hidden">
+        <div class="page-tools"><div><h2 class="section-title">Solicitudes de Crédito</h2><p class="text-muted" style="margin:0;font-size:12.5px">Expediente de cada solicitante: monto, etapa, documentos e historial (datos simulados).</p></div></div>
         <div class="table-container">
           <div class="table-header">
             <div class="table-search">
-              <input type="text" placeholder="Buscar por empresa, contacto o correo..." id="searchClientes" oninput="renderClientesTable()">
+              <input type="text" placeholder="Buscar por solicitante, referencia o correo..." id="searchClientes" oninput="renderClientesTable()">
               <span class="search-icon">&#128269;</span>
             </div>
             <div style="display:flex;gap:8px;align-items:center">
@@ -18,7 +19,7 @@
           </div>
           <div class="table-scroll">
           <table id="clientesTableWrap" class="mobile-cards">
-            <thead><tr><th>Empresa</th><th>Contacto</th><th>Correo</th><th>Etapa</th><th>Valor oportunidad</th><th>Estado</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Institución / cuerpo</th><th>Solicitante</th><th>Correo</th><th>Etapa</th><th>Monto solicitado</th><th>Estado</th><th>Acciones</th></tr></thead>
             <tbody id="clientesTable"></tbody>
           </table>
           </div>
